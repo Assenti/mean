@@ -2,6 +2,37 @@ html {
 	font-family: Helvetica, Verdana, sans-serif;
 }
 
-body {
-	margin: 0;
+button {
+	background-color: navy;
+	font-size: 1.1em;
+	color: white;
+	border-radius: 30px;
+}
+
+table button {
+	background-color: red;
+	font-size: 1.1em;
+	color: white;
+	border-radius: 30px;
+}
+
+thead {
+	background-color: grey;
+	color: white;
+	text-align: center;
+}
+
+td {
+	border: 1px solid navy;
+}
+
+input {
+	font-size: 1.1em;
+}
+
+form button {
+	background-color: green;
+	font-size: 1.1em;
+	color: white;
+	border-radius: 30px;
 }

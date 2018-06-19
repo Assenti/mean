@@ -16,7 +16,21 @@ function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 		templateUrl: '/views/home.html',
 		controller: 'MainCtrl',
 		controllerAs: 'vm'
+	})
+	.state('profile', {
+		url: '/profile',
+		templateUrl: '/views/profile.html',
+		controller: 'ProfileCtrl',
+		controllerAs: 'vm'
+	})
+	.state('contacts', {
+		url: '/contacts',
+		templateUrl: '/views/contacts.html',
+		controller: 'ContactsCtrl',
+		controllerAs: 'vm'
 	});
+
+
 }
 
 

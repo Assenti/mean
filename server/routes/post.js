@@ -4,7 +4,11 @@ const router = express.Router()
 const Post = require('../models/Post')
 
 router.get('/', (req, res, next)=>{
- 	res.send('get posts')
+ 	Post.find()
+ 		.exec((err, posts)=>{
+ 			if(err) return res.end(err);
+ 			res.send(posts);
+ 		})
 })
 
 
@@ -20,5 +24,14 @@ router.post('/', (req, res, next)=>{
 		res.send(post)
 	})
 })
+
+router.delete('/:id', (req, res, next)=>{
+	Post.remove({_id: req.params.id})
+	.exec((err, result)=>{
+		if(err) return res.send(err)
+		res.send(200)
+	})
+})
+
 
 module.exports = router

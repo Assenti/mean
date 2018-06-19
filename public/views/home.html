@@ -3,4 +3,26 @@
 	<input type="text" placeholder="Content" ng-model="vm.content" required>
 	<input type="tetx" placeholder="Author" ng-model="vm.author" required>
 	<button type="submit">Save</button>
+	<button type="reset">Reset</button>
 </form>
+<br>
+<table>
+	<thead>
+		<tr>
+			<td>Title</td>
+			<td>Content</td>
+			<td>Author</td>
+			<td>Date</td>
+			<td>Action</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="post in vm.posts">
+			<td ng-bind="post.title"></td>
+			<td ng-bind="post.content"></td>
+			<td ng-bind="post.author"></td>
+			<td ng-bind="post.data"></td>
+			<td><button ng-click="vm.deletePost(post)">Delete</button></td>
+		</tr>
+	</tbody>
+</table>

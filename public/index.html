@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="decode">
 <head>
 	<title>Main page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<base href="/">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
-<body ng-app="decode" ng-controller = "MainCtrl as vm">
-	<form ng-submit="vm.savePost()">
-		<input type="text" placeholder="Title" ng-model="vm.title" required>
-		<input type="text" placeholder="Content" ng-model="vm.content" required>
-		<input type="tetx" placeholder="Author" ng-model="vm.author" required>
-		<button type="submit">Save</button>
-	</form>
+<body>
+	<!-- pages -->
+	<ui-view>
+		
+	</ui-view>
 </body>
 <script src="/js/vendor/ng.min.js"></script>
+<script src="/js/vendor/ng-route.min.js"></script>
 <script src="/app.js"></script>
+<script src="/js/controllers/home.js"></script>
 </html>

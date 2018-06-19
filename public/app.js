@@ -1,24 +1,22 @@
-var app = angular.module('decode', []);
+var app = angular.module('decode', [
+	'ui.router'
+]);
 
-app.controller('MainCtrl', MainCtrl);
+app.config(routeConfig);
 
-MainCtrl.$inject = ['$http'];
+routeConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
-function MainCtrl($http){
-	var vm = this;
-	vm.savePost = function() {
-		var data = {
-			title: vm.title,
-			content: vm.content,
-			author: vm.author
-		}
+function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+	$locationProvider.html5Mode(true);
+	$urlRouterProvider.otherwise('/');
 
-		$http.post('/api/post', data)
-		.success(function(response){
-			console.log(response);
-		})
-		.error(function(err){
-			console.log(err);
-		})
-	}
+	$stateProvider
+	.state('home', {
+		url: '/',
+		templateUrl: '/views/home.html',
+		controller: 'MainCtrl',
+		controllerAs: 'vm'
+	});
 }
+
+

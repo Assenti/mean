@@ -4,7 +4,7 @@ MainCtrl.$inject = ['$http', '$scope'];
 
 function MainCtrl($http, $scope){
 	var vm = this;
-
+	vm.objectToEdit = null;
 	$http.get('/api/post')
 		.success(function(response){
 			vm.posts = response;
@@ -30,6 +30,16 @@ function MainCtrl($http, $scope){
 		})
 	}
 
+	vm.editPost = function() {
+		$http.put('/api/post', vm.objectToEdit)
+		.success(function(response){
+			vm.closeModal();
+			console.log(response);
+		})
+		.error(function(err){
+			console.log(err);
+		})
+	}
 
 	vm.deletePost = function(post){
 		$http.delete('/api/post/' + post._id)
@@ -44,6 +54,15 @@ function MainCtrl($http, $scope){
 				console.log(err);
 			});
 	}
+
+	vm.makeEditable = function(post){
+		vm.objectToEdit = post;
+	}
+
+	vm.closeModal = function(){
+		vm.objectToEdit = null;	
+	}
+
 }
 
 

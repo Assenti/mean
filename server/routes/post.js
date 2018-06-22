@@ -34,4 +34,21 @@ router.delete('/:id', (req, res, next)=>{
 })
 
 
+router.put('/', (req, res, next)=> {
+	Post.findById(req.body._id)
+	.exec((err, post)=> {
+		if(err) res.status(500).send(err)
+		else {
+			post.title = req.body.title;
+			post.content = req.body.content;
+			post.author = req.body.author;
+			post.save((err, result)=> {
+				if(err) res.status(500).send(err)
+				else res.status(200).send(result)
+			})	
+		}
+		
+	})
+})
+
 module.exports = router

@@ -1,0 +1,12 @@
+/* 3rd party libraries */
+@import url('./vendor/reset.css');
+
+/* atoms */
+@import url('./components/input.css');
+@import url('./components/button.css');
+@import url('./components/modal.css');
+
+/* moleculas */
+@import url('./pages/profile.css');
+@import url('./pages/home.css');
+@import url('./pages/blog-detail.css');

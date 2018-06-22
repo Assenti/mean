@@ -1,1 +1,54 @@
+.btn {
+	font-size: 1em;
+	font-weight: 400;
+	margin: 5px;
+	border: 1px solid;
+	border-radius: 5px;
+	box-shadow: 1px 2px lightgrey;
+	padding: 5px;
+	min-width: 70px;
+	outline: none;
+	cursor: pointer;
+}
 
+.btn:hover {
+	font-size: 1em;
+	font-weight: 400;
+	margin: 5px;
+	border-radius: 5px;
+	box-shadow: 2px 3px lightgrey;
+	padding: 5px;
+	min-width: 70px;
+	outline: none;
+	transform: scale(1.05);
+}
+	
+	.btn__green {
+		background-color: rgb(46, 184, 46);
+		border-color: rgb(46, 184, 46);
+		color: white;
+	}
+
+	.btn__blue {
+		background-color: rgb(0, 71, 179);
+		border-color: rgb(0, 71, 179);
+		color: white;
+	}
+
+	.btn__red {
+		background-color: rgb(204, 0, 0);
+		border-color: rgb(204, 0, 0);
+		color: white;
+	}
+
+	.btn__turquoise {
+		background-color: rgb(41, 163, 163);
+		border-color: rgb(41, 163, 163);
+		color: white;
+	}
+
+	.btn__grey {
+		background-color: rgb(115, 115, 115);
+		border-color: rgb(115, 115, 115);
+		color: white;
+	}

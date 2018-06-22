@@ -5,8 +5,29 @@
 @import url('./components/input.css');
 @import url('./components/button.css');
 @import url('./components/modal.css');
+@import url('./components/table.css');
 
 /* moleculas */
 @import url('./pages/profile.css');
 @import url('./pages/home.css');
 @import url('./pages/blog-detail.css');
+
+.container {
+	width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	font-size: 1.4em;
+}
+
+h3 {
+	font-size: 1.3em;
+}

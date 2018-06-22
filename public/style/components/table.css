@@ -1,0 +1,28 @@
+tr {
+	padding: 3px;
+	border-bottom: 1px solid grey;
+}
+
+tbody>tr:hover {
+	background-color: rgb(242, 242, 242);
+}
+
+.table {
+	width: 100%;
+	background-color: transparent;
+}
+
+.thead {
+	font-weight: bold;
+	text-align: center;
+}
+	
+	.thead__light {
+		background-color: grey;
+		color: white;	
+	}
+
+	.thead__dark {
+		background-color: black;
+		color: white;
+	}

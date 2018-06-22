@@ -1,15 +1,15 @@
-<div>
+<div class="container">
 	<form ng-submit="vm.savePost()">
-		<p><input type="text" placeholder="Title" ng-model="vm.title" required ></p>
-		<p><input type="text" placeholder="Content" ng-model="vm.content" required></p>
-		<p><input type="tetx" placeholder="Author" ng-model="vm.author" required></p>
-		<button type="submit">Add</button>
-		<button type="reset">Reset</button>
+		<p><input class="input" type="text" placeholder="Title" ng-model="vm.title" required ></p>
+		<p><input class="input" type="text" placeholder="Content" ng-model="vm.content" required></p>
+		<p><input class="input" type="tetx" placeholder="Author" ng-model="vm.author" required></p>
+		<button class="btn btn__green" type="submit">Add</button>
+		<button class="btn btn__grey" type="reset">Reset</button>
 	</form>
 </div>
-<div>
-	<table>
-		<thead>
+<div class="container">
+	<table class="table">
+		<thead class="thead thead__light">
 			<tr>
 				<td>Title</td>
 				<td>Content</td>
@@ -25,8 +25,8 @@
 				<td ng-bind="post.author"></td>
 				<td ng-bind="post.data"></td>
 				<td>
-					<button ng-click="vm.makeEditable(post)">Edit</button>
-					<button ng-click="vm.deletePost(post)">Delete</button>
+					<button class="btn btn__blue" ng-click="vm.makeEditable(post)">Edit</button>
+					<button class="btn btn__red" ng-click="vm.deletePost(post)">Delete</button>
 				</td>
 			</tr>
 		</tbody>
@@ -36,19 +36,18 @@
 <section class="modal" ng-if="vm.objectToEdit != null">
 	<div class="modal__backdrop" ng-click="vm.closeModal()"></div>
 	<div class="modal__window">
-		<div class="modal__title">Edit Post</div>
-		<button ng-click="vm.closeModal()">&times;</button>
+		<div class="modal__title"><h2>Edit Post</h2></div>
 		<div class="modal__field">
-			<input type="text" class="input input_modal" ng-model="vm.objectToEdit.title">
+			<input class="input__modal" type="text" class="input input_modal" ng-model="vm.objectToEdit.title">
 		</div>
 		<div class="modal__field">
-			<input type="text" class="input input_modal" ng-model="vm.objectToEdit.content">
+			<input class="input__modal" type="text" class="input input_modal" ng-model="vm.objectToEdit.content">
 		</div>
 		<div class="modal__field">
-			<input type="text" class="input input_modal" ng-model="vm.objectToEdit.author">
+			<input class="input__modal" type="text" class="input input_modal" ng-model="vm.objectToEdit.author">
 		</div>
 		<div class="modal__field">
-			<button class="button button_modal" ng-click="vm.editPost()">Submit</button>
+			<button class="btn btn__green" ng-click="vm.editPost()">Submit</button>
 		</div>
 	</div>
 </section>

@@ -1,28 +1,34 @@
-<form ng-submit="vm.savePost()">
-	<input type="text" placeholder="Title" ng-model="vm.title" required>
-	<input type="text" placeholder="Content" ng-model="vm.content" required>
-	<input type="tetx" placeholder="Author" ng-model="vm.author" required>
-	<button type="submit">Save</button>
-	<button type="reset">Reset</button>
-</form>
-<br>
-<table>
-	<thead>
-		<tr>
-			<td>Title</td>
-			<td>Content</td>
-			<td>Author</td>
-			<td>Date</td>
-			<td>Action</td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="post in vm.posts">
-			<td ng-bind="post.title"></td>
-			<td ng-bind="post.content"></td>
-			<td ng-bind="post.author"></td>
-			<td ng-bind="post.data"></td>
-			<td><button ng-click="vm.deletePost(post)">Delete</button></td>
-		</tr>
-	</tbody>
-</table>
+<div class="container-fluid">
+	<div class="form-group">
+		<h1 class="display-4"> Adding Post</h1>
+		<form ng-submit="vm.savePost()">
+			<p><input type="text" placeholder="Title" ng-model="vm.title" required class="form-control"></p>
+			<p><input type="text" placeholder="Content" ng-model="vm.content" required class="form-control"></p>
+			<p><input type="tetx" placeholder="Author" ng-model="vm.author" required class="form-control"></p>
+			<button type="submit" class="btn btn-success">Add</button>
+			<button type="reset" class="btn btn-secondary">Reset</button>
+		</form>
+	</div>
+</div>
+<div class="container-fluid">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>Title</td>
+				<td>Content</td>
+				<td>Author</td>
+				<td>Date</td>
+				<td>Action</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="post in vm.posts">
+				<td ng-bind="post.title"></td>
+				<td ng-bind="post.content"></td>
+				<td ng-bind="post.author"></td>
+				<td ng-bind="post.data"></td>
+				<td><button ng-click="vm.deletePost(post)" class="btn btn-danger">Delete</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

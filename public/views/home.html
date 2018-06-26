@@ -1,21 +1,23 @@
 <div class="container">
+	<h2>New Post Adding Form</h2>
 	<form ng-submit="vm.savePost()">
-		<input class="input" type="text" placeholder="Title" ng-model="vm.title" required >
-		<input class="input" type="text" placeholder="Content" ng-model="vm.content" required>
-		<input class="input" type="text" placeholder="Author" ng-model="vm.author" required>
-		<input class="input-file" type="file" ng-file-model="vm.file" accept="image/*" required>
+		<input class="input" type="text" placeholder="Title..." ng-model="vm.title" required >
+		<input class="input" type="text" placeholder="Content..." ng-model="vm.content" required>
+		<input class="input" type="text" placeholder="Author..." ng-model="vm.author" required>
+		<input class="input__file" type="file" ng-file-model="vm.file" accept="image/*" required>
 		<button class="btn btn__green" type="submit">Add</button>
 		<button class="btn btn__grey" type="reset">Reset</button>
 	</form>
 </div>
 <div class="container">
+	<h2>Added Posts List</h2>
 	<table class="table">
 		<thead class="thead thead__turquoise">
 			<tr>
 				<th>Title</th>
 				<th>Content</th>
 				<th>Author</th>
-				<th>Date</th>
+				<th>Posted Date</th>
 				<th>Action</th>
 			</tr>
 		</thead>
@@ -38,19 +40,22 @@
 <section class="modal" ng-if="vm.objectToEdit != null">
 	<div class="modal__backdrop" ng-click="vm.closeModal()"></div>
 	<div class="modal__window">
-		<div class="modal__title"><h2>Edit Post</h2></div>
+		<div class="modal__title">Edit Post</div>
 		<div class="modal__field">
-			<input class="input__modal" type="text" class="input input_modal" ng-model="vm.objectToEdit.title">
+			<label for="title">Title:</label>
+			<input type="text" class="input input_modal" ng-model="vm.objectToEdit.title" id="title">
 		</div>
 		<div class="modal__field">
-			<input class="input__modal" type="text" class="input input_modal" ng-model="vm.objectToEdit.content">
+			<label for="content">Content:</label>
+			<input type="text" class="input input_modal" ng-model="vm.objectToEdit.content" id="content">
 		</div>
 		<div class="modal__field">
-			<input class="input__modal" type="text" class="input input_modal" ng-model="vm.objectToEdit.author">
+			<label for="author">Author:</label>
+			<input type="text" class="input input_modal" ng-model="vm.objectToEdit.author" id="author">
 		</div>
-		<div class="modal__field">
-			<button class="btn btn__green" ng-click="vm.editPost()">Submit</button>
-		</div>
+		<img ng-src="{{ vm.objectToEdit.link }}" class="modal__image">
+		<button class="btn btn__blue" ng-click="vm.editPost()">Edit</button>
+		<button class="btn btn__grey" ng-click="vm.closeModal()">Close</button>
 	</div>
 </section>
 

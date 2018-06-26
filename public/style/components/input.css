@@ -1,25 +1,19 @@
 .input {
 	border-bottom: 1px solid rgb(41, 163, 163);
-	font-size: 1.1em;
+	color: lightgrey;
 	margin: 5px;
 	padding: 5px;
 	width: 50%;
 	outline: none;
 }
 
-.input-file {
-	display: block;
-	margin: 5px;
-	padding: 5px;
-	width: 50%;
-	outline: none;
-}
-
-	.input__modal {
-		border-bottom: 1px solid rgb(41, 163, 163);
-		font-size: 1.1em;
+	.input__file {
+		display: block;
 		margin: 5px;
 		padding: 5px;
-		width: 90%;
+		width: 50%;
 		outline: none;
-	}
+	}	
+
+
+	

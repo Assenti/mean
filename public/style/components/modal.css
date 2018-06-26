@@ -26,4 +26,49 @@
 		background-color: rgba(255, 255, 255, 1);
 		z-index: 2;
 		padding: 20px;
+
 	}
+
+	.modal__title {
+		text-align: center;
+		font-size: 28px;
+		font-weight: bold;
+		color: blue;
+		maring-bottom: 25px;
+	}
+
+	.modal__image {
+		position: relative;
+		width: 50%;
+		height: 50%;
+		display: block;
+		margin: auto;
+	}
+
+	.modal__field {
+		display: block;
+		font-size: 16px;
+	}
+
+	.modal__field label{
+		cursor: pointer;
+		display: inline-block;
+		min-width: 80px;
+		text-align: right;
+		border: 1px solid blue;
+		border-radius: 5px;
+		font-weight: bold;
+		color: blue;
+		padding: 5px;
+	}
+
+	.modal__field input {
+		border-bottom: 1px solid blue;
+		margin: 5px;
+		padding: 5px;
+		width: 70%;
+		outline: none;
+	}
+
+
+

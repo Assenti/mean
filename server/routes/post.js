@@ -10,7 +10,7 @@ const Post = require('../models/Post')
 router.get('/', (req, res, next)=>{
  	Post.find()
  		.exec((err, posts)=>{
- 			if(err) return res.end(err);
+ 			if(err) return res.send(err);
  			res.send(posts);
  		})
 })
@@ -18,7 +18,7 @@ router.get('/', (req, res, next)=>{
 router.get('/:id', (req, res, next)=>{
  	Post.findById(req.params.id)
  		.exec((err, post)=>{
- 			if(err) res.send(err);
+ 			if(err) return res.send(err);
  			res.send(post);
  		})
 })

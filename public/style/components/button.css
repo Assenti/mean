@@ -20,8 +20,14 @@
 	padding: 5px;
 	min-width: 70px;
 	outline: none;
-	transform: scale(1.05);
+	opacity: 0.7;
+	transition: 0.2s;
 }
+
+.btn:active {
+	transform: scale(0.9);
+}
+
 	
 	.btn__green {
 		background-color: rgb(46, 184, 46);

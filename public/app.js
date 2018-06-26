@@ -23,10 +23,10 @@ function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 		controller: 'ProfileCtrl',
 		controllerAs: 'vm'
 	})
-	.state('contacts', {
-		url: '/contacts',
-		templateUrl: '/views/contacts.html',
-		controller: 'ContactsCtrl',
+	.state('post', {
+		url: '/post/:id',
+		templateUrl: '/views/post.html',
+		controller: 'PostCtrl',
 		controllerAs: 'vm'
 	});
 

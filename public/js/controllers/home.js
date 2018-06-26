@@ -15,19 +15,41 @@ function MainCtrl($http, $scope){
 		});
 
 	vm.savePost = function() {
-		var data = {
-			title: vm.title,
-			content: vm.content,
-			author: vm.author
-		}
+		console.log(vm.file);
+		var data = new FormData();
 
-		$http.post('/api/post', data)
+		data.append('title', vm.title);
+		data.append('content', vm.content);
+		data.append('author', vm.author);
+		data.append('file', vm.file);
+
+		$http.post('/api/post', data, {
+			headers: {'Content-Type': undefined },
+			transformRequest: angular.identity
+		})
 		.success(function(response){
+			console.log(response)
 			vm.posts.push(response);
 		})
 		.error(function(err){
 			console.log(err);
 		})
+
+		
+
+		// var data = {
+		// 	title: vm.title,
+		// 	content: vm.content,
+		// 	author: vm.author
+		// }
+
+		// $http.post('/api/post', data)
+		// .success(function(response){
+		// 	vm.posts.push(response);
+		// })
+		// .error(function(err){
+		// 	console.log(err);
+		// })
 	}
 
 	vm.editPost = function() {

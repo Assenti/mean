@@ -16,6 +16,9 @@ app.use(morgan('dev'))
 
 app.use('/api', require('./server/routes'))
 
+app.get('*', (req, res, next)=>{
+	res.redirect('/#' + req.originalUrl);
+})
 
 app.listen(3000, ()=>{
 	console.log('Server started on port 3000...')

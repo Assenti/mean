@@ -1,32 +1,34 @@
 <div class="container">
 	<form ng-submit="vm.savePost()">
-		<p><input class="input" type="text" placeholder="Title" ng-model="vm.title" required ></p>
-		<p><input class="input" type="text" placeholder="Content" ng-model="vm.content" required></p>
-		<p><input class="input" type="tetx" placeholder="Author" ng-model="vm.author" required></p>
+		<input class="input" type="text" placeholder="Title" ng-model="vm.title" required >
+		<input class="input" type="text" placeholder="Content" ng-model="vm.content" required>
+		<input class="input" type="text" placeholder="Author" ng-model="vm.author" required>
+		<input class="input-file" type="file" ng-file-model="vm.file" accept="image/*" required>
 		<button class="btn btn__green" type="submit">Add</button>
 		<button class="btn btn__grey" type="reset">Reset</button>
 	</form>
 </div>
 <div class="container">
 	<table class="table">
-		<thead class="thead thead__light">
+		<thead class="thead thead__turquoise">
 			<tr>
-				<td>Title</td>
-				<td>Content</td>
-				<td>Author</td>
-				<td>Date</td>
-				<td>Action</td>
+				<th>Title</th>
+				<th>Content</th>
+				<th>Author</th>
+				<th>Date</th>
+				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="post in vm.posts">
-				<td ng-bind="post.title"></td>
-				<td ng-bind="post.content"></td>
-				<td ng-bind="post.author"></td>
-				<td ng-bind="post.data"></td>
+				<td ng-bind="post.title" ui-sref="post({id: post._id})"></td>
+				<td ng-bind="post.content" ui-sref="post({id: post._id})"></td>
+				<td ng-bind="post.author" ui-sref="post({id: post._id})"></td>
+				<td ng-bind="post.data" ui-sref="post({id: post._id})"></td>
 				<td>
 					<button class="btn btn__blue" ng-click="vm.makeEditable(post)">Edit</button>
 					<button class="btn btn__red" ng-click="vm.deletePost(post)">Delete</button>
+					<button class="btn btn__green" ui-sref="post({id: post._id})">More</button>
 				</td>
 			</tr>
 		</tbody>

@@ -7,20 +7,20 @@
 	<link rel="stylesheet" type="text/css" href="./style/all.css">
 </head>
 <body>
-	<div>
+	<div class="container">
 		<button class="btn btn__turquoise" ui-sref="home">Home</button>
 		<button class="btn btn__turquoise" ui-sref="profile">Profile</button>
-		<button class="btn btn__turquoise" ui-sref="contacts">Contacts</button>
+		<!-- <button class="btn btn__turquoise" ui-sref="post">Post</button> -->
 	</div>
 	<!-- pages -->
 	<ui-view>
-		
 	</ui-view>
 </body>
 <script src="/js/vendor/ng.min.js"></script>
 <script src="/js/vendor/ng-route.min.js"></script>
 <script src="/app.js"></script>
+<script src="/js/vendor/file.js"></script>
 <script src="/js/controllers/home.js"></script>
 <script src="/js/controllers/profile.js"></script>
-<script src="/js/controllers/contacts.js"></script>
+<script src="/js/controllers/post.js"></script>
 </html>

@@ -7,7 +7,8 @@ const PostSchema = mongoose.Schema({
 	data: {
 		type: Date,
 		default: Date.now
-	}
+	},
+	link: String
 })
 
 module.exports = mongoose.model('Post', PostSchema)

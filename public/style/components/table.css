@@ -1,12 +1,3 @@
-td {
-	padding: 5px;
-	border-bottom: 1px solid grey;
-}
-
-tbody>tr:hover {
-	background-color: lightgrey;
-}
-
 .table {
 	width: 100%;
 	background-color: transparent;
@@ -14,26 +5,19 @@ tbody>tr:hover {
 	margin-bottom: 15px;
 }
 
+.table td, th, tr {
+	font-family: 'Arsenal', sans-serif;
+	padding: 5px;
+	border-bottom: 1px solid grey;
+}
+
+.table tbody>tr:hover {
+	background-color: lightgrey;
+}
+
 .thead {
 	font-weight: bold;
-	text-align: center;
+	text-align: left;
+	background-color: lightblue;
 }
 
-.thead tr, th {
-	padding: 10px;
-}
-
-	.thead__light {
-		background-color: navy;
-		color: white;	
-	}
-
-	.thead__dark {
-		background-color: black;
-		color: white;
-	}
-
-	.thead__turquoise {
-		background-color: rgb(41, 163, 163);
-		color: white;
-	}

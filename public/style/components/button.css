@@ -1,25 +1,18 @@
 .btn {
+	font-family: 'Arsenal', sans-serif;
 	font-size: 1em;
 	font-weight: 400;
-	margin: 5px;
+	margin: 3px;
 	border: 1px solid;
 	border-radius: 5px;
 	box-shadow: 1px 2px lightgrey;
-	padding: 5px;
+	padding: 3px;
 	min-width: 70px;
 	outline: none;
 	cursor: pointer;
 }
 
 .btn:hover {
-	font-size: 1em;
-	font-weight: 400;
-	margin: 5px;
-	border-radius: 5px;
-	box-shadow: 2px 3px lightgrey;
-	padding: 5px;
-	min-width: 70px;
-	outline: none;
 	opacity: 0.7;
 	transition: 0.2s;
 }
@@ -27,7 +20,6 @@
 .btn:active {
 	transform: scale(0.9);
 }
-
 	
 	.btn__green {
 		background-color: rgb(46, 184, 46);

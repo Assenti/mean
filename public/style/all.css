@@ -1,5 +1,6 @@
 /* 3rd party libraries */
 @import url('./vendor/reset.css');
+@import url('https://fonts.googleapis.com/css?family=Arsenal');
 
 /* atoms */
 @import url('./components/input.css');
@@ -11,6 +12,11 @@
 @import url('./pages/profile.css');
 @import url('./pages/home.css');
 @import url('./pages/blog-detail.css');
+
+html, h1, h2, h3, h4, h5, h6, p {
+	font-family: 'Arsenal', sans-serif;
+}
+
 
 .container {
 	width: 100%;

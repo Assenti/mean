@@ -8,7 +8,7 @@ function MainCtrl($http, $scope){
 	$http.get('/api/post')
 		.success(function(response){
 			vm.posts = response;
-			// console.log(response);
+			console.log(response);
 		})
 		.error(function(err){
 			console.log(err);

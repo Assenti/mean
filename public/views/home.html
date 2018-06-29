@@ -13,7 +13,6 @@
 	<thead class="thead">
 		<tr>
 			<th>Title</th>
-			<th>Content</th>
 			<th>Author</th>
 			<th>Posted Date</th>
 			<th>Image</th>
@@ -23,7 +22,6 @@
 	<tbody>
 		<tr ng-repeat="post in vm.posts">
 			<td ng-bind="post.title" ui-sref="post({id: post._id})"></td>
-			<td ng-bind="post.content" ui-sref="post({id: post._id})"></td>
 			<td ng-bind="post.author" ui-sref="post({id: post._id})"></td>
 			<td ng-bind="post.data" ui-sref="post({id: post._id})"></td>
 			<td><img ng-src="{{ post.link || './images/no-image.png' }}"></td>

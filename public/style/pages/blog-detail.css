@@ -22,12 +22,8 @@
 }
 
 .post-table td {
-	padding: 5px 0;
+	padding: 10px 0;
 	border-bottom: 1px solid grey;
-}
-
-.post-table tbody>tr:hover {
-	background-color: rgb(250, 250, 250);
 }
 
 .post-detail button {

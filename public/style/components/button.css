@@ -13,10 +13,31 @@
 
 .btn:hover {
 	opacity: 0.7;
-	transition: 0.2s;
+	transition: all 0.2s;
 }
 
 .btn:active {
+	transform: scale(0.9);
+}
+
+.btn-circle {
+	border: 1px solid;
+	border-radius: 30px;
+	box-shadow: 1px 2px lightgrey;
+	min-width: 40px;
+	min-height: 40px;
+	padding: auto;
+	margin: 3px 0;
+	outline: none;
+	cursor: pointer;
+}
+
+.btn-circle:hover {
+	opacity: 0.7;
+	transition: all 0.2s;
+}
+
+.btn-circle:active {
 	transform: scale(0.9);
 }
 	
@@ -28,14 +49,14 @@
 
 
 	.btn__green {
-		background-color: rgb(46, 184, 46);
-		border-color: rgb(46, 184, 46);
+		background-color: rgb(0, 153, 115);
+		border-color: rgb(0, 153, 115);
 		color: white;
 	}
 
 	.btn__blue {
-		background-color: rgb(0, 71, 179);
-		border-color: rgb(0, 71, 179);
+		background-color: rgb(51, 102, 153);
+		border-color: rgb(51, 102, 153);
 		color: white;
 	}
 

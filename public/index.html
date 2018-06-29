@@ -4,14 +4,15 @@
 	<title>Main page</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<base href="/">
+	<link rel="shortcut icon" href="/images/github.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="./style/all.css">
 </head>
 <body>
 	<section class="header" ng-controller='HeaderCtrl as vm'>
 		<img class="logo" src="/images/github-logo.svg" ui-sref="home">
 		<div class="header-nav">
-			<li class="header-nav__item" ui-sref="home">Home</li>
-			<li class="header-nav__item" ui-sref="profile">Profile</li>
+			<li class="header-nav__item" ui-sref="home"><i class="fa fa-home"></i> Home</li>
+			<li class="header-nav__item" ui-sref="profile"><i class="fa fa-user"></i> Profile</li>
 		</div>
 		<div class="header-action">
 			<button class="btn btn__black" ng-if="!session"><i class="fa fa-user-plus"></i> Sign Up</button>
@@ -23,6 +24,11 @@
 	<!-- pages -->
 	<ui-view>
 	</ui-view>
+	<section class="footer">
+		<div class="footer-content">Post App - Decode School - MEAN Stack</div>
+		<img class="logo" src="/images/github.svg" ui-sref="home">
+		<div class="footer-content">All rights reserved &copy; 2018</div>
+	</section>
 </body>
 <script src="/js/vendor/ng.min.js"></script>
 <script src="/js/vendor/ng-route.min.js"></script>

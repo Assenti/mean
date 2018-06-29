@@ -1,41 +1,41 @@
-<div class="container">
-	<h2>Форма добавления нового поста</h2>
+<div class="post-form">
+	<h2>New Post Adding Form</h2>
 	<form ng-submit="vm.savePost()">
-		<input class="input" type="text" placeholder="Title..." ng-model="vm.title" required >
-		<input class="input" type="text" placeholder="Content..." ng-model="vm.content" required>
-		<input class="input" type="text" placeholder="Author..." ng-model="vm.author" required>
-		<input class="input__file" type="file" ng-file-model="vm.file" accept="image/*" required>
+		<input type="text" placeholder="Title..." ng-model="vm.title" required >
+		<input type="text" placeholder="Content..." ng-model="vm.content" required>
+		<input type="text" placeholder="Author..." ng-model="vm.author" required>
+		<input class="input-file" type="file" ng-file-model="vm.file" accept="image/*" required>
 		<button class="btn btn__green" type="submit"><i class="fa fa-plus"></i> Add</button>
 		<button class="btn btn__grey" type="reset"><i class="fa fa-power-off"></i> Reset</button>
 	</form>
 </div>
-<div class="container">
-	<h2>Добавленные посты</h2>
-	<table class="table">
-		<thead class="thead">
-			<tr>
-				<th>Title</th>
-				<th>Content</th>
-				<th>Author</th>
-				<th>Posted Date</th>
-				<th>Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="post in vm.posts">
-				<td ng-bind="post.title" ui-sref="post({id: post._id})"></td>
-				<td ng-bind="post.content" ui-sref="post({id: post._id})"></td>
-				<td ng-bind="post.author" ui-sref="post({id: post._id})"></td>
-				<td ng-bind="post.data" ui-sref="post({id: post._id})"></td>
-				<td>
-					<button class="btn btn__blue" ng-click="vm.makeEditable(post)"><i class="fa fa-edit"></i> Edit</button>
-					<button class="btn btn__red" ng-click="vm.deletePost(post)"><i class="fa fa-trash-alt"></i> Delete</button>
-					<button class="btn btn__green" ui-sref="post({id: post._id})"><i class="fa fa-info"></i> More</button>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+<table class="table">
+	<thead class="thead">
+		<tr>
+			<th>Title</th>
+			<th>Content</th>
+			<th>Author</th>
+			<th>Posted Date</th>
+			<th>Image</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="post in vm.posts">
+			<td ng-bind="post.title" ui-sref="post({id: post._id})"></td>
+			<td ng-bind="post.content" ui-sref="post({id: post._id})"></td>
+			<td ng-bind="post.author" ui-sref="post({id: post._id})"></td>
+			<td ng-bind="post.data" ui-sref="post({id: post._id})"></td>
+			<td><img ng-src="{{ post.link || './images/no-image.png' }}"></td>
+			<td>
+				<button class="btn-circle btn__blue" ng-click="vm.makeEditable(post)"><i class="fa fa-edit"></i></button>
+				<button class="btn-circle btn__red" ng-click="vm.deletePost(post)"><i class="fa fa-trash-alt"></i></button>
+				<button class="btn-circle btn__green" ui-sref="post({id: post._id})"><i class="fa fa-info-circle"></i></button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
 
 <section class="modal" ng-if="vm.objectToEdit != null">
 	<div class="modal__backdrop" ng-click="vm.closeModal()"></div>
@@ -54,8 +54,8 @@
 			<input type="text" class="input input_modal" ng-model="vm.objectToEdit.author" id="author">
 		</div>
 		<img ng-src="{{ vm.objectToEdit.link }}" class="modal__image">
-		<button class="btn btn__blue" ng-click="vm.editPost()">Edit</button>
-		<button class="btn btn__grey" ng-click="vm.closeModal()">Close</button>
+		<button class="btn btn__blue" ng-click="vm.editPost()"><i class="fa fa-edit"></i> Edit</button>
+		<button class="btn btn__grey" ng-click="vm.closeModal()"><i class="fa fa-times"></i> Close</button>
 	</div>
 </section>
 

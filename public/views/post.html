@@ -1,12 +1,11 @@
 <section class="post-detail">
+	<h1>Post Details</h1>
 	<img class="post-image" ng-src="{{ vm.post.link || '../images/no-image.png' }}">
-	<span class="post-title">Title: {{ vm.post.title }}</span>
-	<span class="post-content">Content: {{ vm.post.content }}</span>
-	<div class="post-detail-info">
-		<span class="post-author">Author: {{ vm.post.author }}</span>
-		<span class="post-date">Created Date: {{ vm.post.data }}</span>
-	</div>
-	<button class="btn btn__blue" ui-sref="home">Back</button>
+	<table class="post-table">
+		<tr><td>Title: {{ vm.post.title }}</td></tr>
+		<tr><td>Content: {{ vm.post.content }}</td></tr>
+		<tr><td>Author: {{ vm.post.author }}</td></tr>
+		<tr><td>Created Date: {{ vm.post.data }}</td></tr>
+	</table>
+	<button class="btn btn__blue" ui-sref="home"><i class="fa fa-undo"></i> Back</button>
 </section>
-
-<!-- ng-if="vm.post.link == null src='../images/ben_hershey.jpg'" -->

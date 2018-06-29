@@ -1,9 +1,21 @@
 .auth {
+	margin: 70px auto;
 	padding: 25px;
-	/*display: flex;
-	align-items: center;
-	justify-content: center;*/
+	text-align: center;
+	border: 2px solid rgb(0, 153, 153);
+	width: 40%;
+}
 
+.auth-logo {
+	width: 70px;
+	margin: 15px 0;
+	cursor: pointer;
+}
+
+.auth form {
+	margin: 0 auto;
+	width: 90%;
+	text-align: center;
 }
 
 .auth h1 {
@@ -11,10 +23,21 @@
 }
 
 .auth input {
+	font-size: 18px;
 	display: block;
 	margin: 15px 0;
+	padding: 10px 0;
+	width: 90%;
+	border-bottom: 1px solid rgb(0, 153, 153);
+	outline: none;
+}
+
+.auth input:focus {
+	width: 100%;
+	transition: all 0.5s linear;
 }
 
 .auth button {
 	display: block;
+	margin: 0 auto;
 }

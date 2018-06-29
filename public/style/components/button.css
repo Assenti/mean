@@ -1,12 +1,11 @@
 .btn {
-	font-family: 'Arsenal', sans-serif;
 	font-size: 1em;
 	font-weight: 400;
-	margin: 3px;
+	margin: 5px;
 	border: 1px solid;
 	border-radius: 5px;
 	box-shadow: 1px 2px lightgrey;
-	padding: 3px;
+	padding: 5px;
 	min-width: 70px;
 	outline: none;
 	cursor: pointer;
@@ -21,6 +20,13 @@
 	transform: scale(0.9);
 }
 	
+	.btn__black {
+		background-color: rgba(0, 0, 0, 0.8);
+		border-color: rgba(0, 0, 0, 0.8);
+		color: white;
+	}
+
+
 	.btn__green {
 		background-color: rgb(46, 184, 46);
 		border-color: rgb(46, 184, 46);

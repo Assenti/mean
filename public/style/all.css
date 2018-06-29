@@ -1,22 +1,24 @@
 /* 3rd party libraries */
 @import url('./vendor/reset.css');
-@import url('https://fonts.googleapis.com/css?family=Arsenal');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://use.fontawesome.com/releases/v5.1.0/css/all.css');
 
 /* atoms */
 @import url('./components/input.css');
 @import url('./components/button.css');
 @import url('./components/modal.css');
 @import url('./components/table.css');
+@import url('./components/header.css');
+@import url('./components/auth.css');
 
 /* moleculas */
 @import url('./pages/profile.css');
 @import url('./pages/home.css');
 @import url('./pages/blog-detail.css');
 
-html, h1, h2, h3, h4, h5, h6, p {
-	font-family: 'Arsenal', sans-serif;
+html, h1, h2, h3, h4, h5, h6, p, table, tr, td, input, button, li {
+	font-family: 'Ubuntu', sans-serif;
 }
-
 
 .container {
 	width: 100%;
@@ -28,13 +30,17 @@ html, h1, h2, h3, h4, h5, h6, p {
 }
 
 h1 {
-	font-size: 1.5em;
+	font-size: 30px;
 }
 
 h2 {
-	font-size: 1.4em;
+	font-size: 24px;
 }
 
 h3 {
-	font-size: 1.3em;
+	font-size: 22px;
+}
+
+h4 {
+	font-size: 20px;
 }

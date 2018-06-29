@@ -1,5 +1,4 @@
 .input {
-	font-family: 'Arsenal', sans-serif;
 	border-bottom: 1px solid rgb(41, 163, 163);
 	color: lightgrey;
 	margin: 5px;
@@ -15,7 +14,6 @@
 }
 
 	.input__file {
-		font-family: 'Arsenal', sans-serif;
 		display: block;
 		margin: 5px;
 		padding: 5px;

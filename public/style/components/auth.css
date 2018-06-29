@@ -1,0 +1,20 @@
+.auth {
+	padding: 25px;
+	/*display: flex;
+	align-items: center;
+	justify-content: center;*/
+
+}
+
+.auth h1 {
+	display: block;
+}
+
+.auth input {
+	display: block;
+	margin: 15px 0;
+}
+
+.auth button {
+	display: block;
+}

@@ -5,8 +5,8 @@
 		<input class="input" type="text" placeholder="Content..." ng-model="vm.content" required>
 		<input class="input" type="text" placeholder="Author..." ng-model="vm.author" required>
 		<input class="input__file" type="file" ng-file-model="vm.file" accept="image/*" required>
-		<button class="btn btn__green" type="submit">Add</button>
-		<button class="btn btn__grey" type="reset">Reset</button>
+		<button class="btn btn__green" type="submit"><i class="fa fa-plus"></i> Add</button>
+		<button class="btn btn__grey" type="reset"><i class="fa fa-power-off"></i> Reset</button>
 	</form>
 </div>
 <div class="container">
@@ -28,9 +28,9 @@
 				<td ng-bind="post.author" ui-sref="post({id: post._id})"></td>
 				<td ng-bind="post.data" ui-sref="post({id: post._id})"></td>
 				<td>
-					<button class="btn btn__blue" ng-click="vm.makeEditable(post)">Edit</button>
-					<button class="btn btn__red" ng-click="vm.deletePost(post)">Delete</button>
-					<button class="btn btn__green" ui-sref="post({id: post._id})">More</button>
+					<button class="btn btn__blue" ng-click="vm.makeEditable(post)"><i class="fa fa-edit"></i> Edit</button>
+					<button class="btn btn__red" ng-click="vm.deletePost(post)"><i class="fa fa-trash-alt"></i> Delete</button>
+					<button class="btn btn__green" ui-sref="post({id: post._id})"><i class="fa fa-info"></i> More</button>
 				</td>
 			</tr>
 		</tbody>

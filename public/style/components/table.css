@@ -6,13 +6,12 @@
 }
 
 .table td, th, tr {
-	font-family: 'Arsenal', sans-serif;
 	padding: 5px;
 	border-bottom: 1px solid grey;
 }
 
 .table tbody>tr:hover {
-	background-color: lightgrey;
+	background-color: rgb(250, 250, 250);
 }
 
 .thead {

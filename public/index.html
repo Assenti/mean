@@ -7,20 +7,31 @@
 	<link rel="stylesheet" type="text/css" href="./style/all.css">
 </head>
 <body>
-	<div class="container">
-		<button class="btn btn__turquoise" ui-sref="home">Home</button>
-		<button class="btn btn__turquoise" ui-sref="profile">Profile</button>
-		<!-- <button class="btn btn__turquoise" ui-sref="post">Post</button> -->
-	</div>
+	<section class="header" ng-controller='HeaderCtrl as vm'>
+		<img class="logo" src="/images/github-logo.svg" ui-sref="home">
+		<div class="header-nav">
+			<li class="header-nav__item" ui-sref="home">Home</li>
+			<li class="header-nav__item" ui-sref="profile">Profile</li>
+		</div>
+		<div class="header-action">
+			<button class="btn btn__black" ng-if="!session"><i class="fa fa-user-plus"></i> Sign Up</button>
+			<button class="btn btn__blue" ui-sref="auth" ng-if="!session"><i class="fa fa-sign-in-alt"></i> Sign In</button>
+			<button class="btn btn__red" ng-click="vm.logout()" ng-if="session"><i class="fa fa-sign-out-alt"></i> Sign Out</button>
+		</div>
+	</section>
+
 	<!-- pages -->
 	<ui-view>
 	</ui-view>
 </body>
 <script src="/js/vendor/ng.min.js"></script>
 <script src="/js/vendor/ng-route.min.js"></script>
+<script src="/js/vendor/ng-cookies.min.js"></script>
 <script src="/app.js"></script>
 <script src="/js/vendor/file.js"></script>
 <script src="/js/controllers/home.js"></script>
 <script src="/js/controllers/profile.js"></script>
 <script src="/js/controllers/post.js"></script>
+<script src="/js/controllers/auth.js"></script>
+<script src="/js/controllers/header.js"></script>
 </html>

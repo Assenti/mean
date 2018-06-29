@@ -1,5 +1,6 @@
 var app = angular.module('decode', [
-	'ui.router'
+	'ui.router',
+	'ngCookies'
 ]);
 
 app.config(routeConfig);
@@ -21,6 +22,12 @@ function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 		url: '/profile',
 		templateUrl: '/views/profile.html',
 		controller: 'ProfileCtrl',
+		controllerAs: 'vm'
+	})
+	.state('auth', {
+		url: '/auth',
+		templateUrl: '/views/auth.html',
+		controller: 'AuthCtrl',
 		controllerAs: 'vm'
 	})
 	.state('post', {

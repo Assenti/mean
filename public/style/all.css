@@ -11,6 +11,7 @@
 @import url('./components/auth.css');
 @import url('./components/footer.css');
 @import url('./components/post-form.css');
+@import url('./components/register.css');
 
 /* moleculas */
 @import url('./pages/profile.css');

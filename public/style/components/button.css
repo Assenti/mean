@@ -26,10 +26,13 @@
 	box-shadow: 1px 2px lightgrey;
 	min-width: 40px;
 	min-height: 40px;
-	padding: auto;
 	margin: 3px 0;
 	outline: none;
 	cursor: pointer;
+}
+
+.btn-circle i {
+	font-size: 18px;
 }
 
 .btn-circle:hover {

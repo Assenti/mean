@@ -30,6 +30,12 @@ function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 		controller: 'AuthCtrl',
 		controllerAs: 'vm'
 	})
+	.state('register', {
+		url: '/register',
+		templateUrl: '/views/register.html',
+		controller: 'RegisterCtrl',
+		controllerAs: 'vm'
+	})
 	.state('post', {
 		url: '/post/:id',
 		templateUrl: '/views/post.html',

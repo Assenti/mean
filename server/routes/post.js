@@ -7,6 +7,7 @@ const path = require('path')
 
 const Post = require('../models/Post')
 
+
 router.get('/', (req, res, next)=>{
  	Post.find()
  		.exec((err, posts)=>{

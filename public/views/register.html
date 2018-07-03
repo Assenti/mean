@@ -1,0 +1,10 @@
+<section class="register">
+	<img src="../images/github-logo.svg" class="register-logo" ui-sref="home">
+	<h1>Sign Up</h1>
+	<form ng-submit="vm.register()">
+		<input type="text" ng-model="vm.name" placeholder="Name..." required>
+		<input type="email" ng-model="vm.email" placeholder="Email..." required>
+		<input type="password" ng-model="vm.password" placeholder="Password..." required>
+		<button class="btn btn__blue" type="submit"><i class="fa fa-user-plus"></i> Sign Up</button>
+	</form>
+</section>

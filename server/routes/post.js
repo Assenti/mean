@@ -6,7 +6,7 @@ const fs = require('fs')
 const path = require('path')
 
 const Post = require('../models/Post')
-
+const Comment = require('../models/Comment')
 
 router.get('/', (req, res, next)=>{
  	Post.find()
@@ -17,7 +17,7 @@ router.get('/', (req, res, next)=>{
 })
 
 router.get('/:id', (req, res, next)=>{
- 	Post.findById(req.params.id)
+ 	Post.findById(req.params.id).populate('comments')
  		.exec((err, post)=>{
  			if(err) return res.send(err);
  			res.send(post);

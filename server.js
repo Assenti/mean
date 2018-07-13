@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost/mean')
 const app = express()
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(bodyParser.json({limit: '1mb'}))
+app.use(bodyParser.json({limit: '5mb'}))
 app.use(cookieParser())
 app.use(morgan('dev'))
 app.use(session({
@@ -31,3 +31,5 @@ app.get('*', (req, res, next)=>{
 app.listen(3000, ()=>{
 	console.log('Server started on port 3000...')
 })
+
+// fsnihgdmbxfwhptq

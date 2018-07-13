@@ -1,9 +1,7 @@
 .post-form {
-	padding: 15px;
-	text-align: center;
-	width: 60%;
+	padding: 15px 0;
+	width: 90%;
 	margin: 15px auto;
-	border: 2px solid rgb(51, 102, 153);
 }
 
 .post-form form {
@@ -14,7 +12,7 @@
 
 .post-form input {
 	border-bottom: 1px solid rgb(41, 163, 163);
-	margin: 10px;
+	margin: 10px 0;
 	padding: 10px 0;
 	width: 95%;
 	outline: none;
@@ -29,4 +27,9 @@
 
 input.input-file  {
 	border-bottom: none;
+}
+
+.post-title {
+	margin: 15px 0;
+	font-size: 34px;
 }

@@ -1,5 +1,5 @@
-<div class="post-form">
-	<h2>New Post Adding Form</h2>
+<div class="post-form" ng-controller="HeaderCtrl as vm" ng-if="session">
+	<div class="post-title">New Post Adding Form</div>
 	<form ng-submit="vm.savePost()">
 		<input type="text" placeholder="Title..." ng-model="vm.title" required >
 		<input type="text" placeholder="Content..." ng-model="vm.content" required>
@@ -9,6 +9,7 @@
 		<button class="btn btn__grey" type="reset"><i class="fa fa-power-off"></i> Reset</button>
 	</form>
 </div>
+<div class="table-title">Added Posts</div>
 <table class="table">
 	<thead class="thead">
 		<tr>

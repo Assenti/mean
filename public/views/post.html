@@ -8,4 +8,20 @@
 		<tr><td>Created Date: {{ vm.post.data }}</td></tr>
 	</table>
 	<button class="btn btn__blue" ui-sref="home"><i class="fa fa-undo"></i> Back</button>
+	<form ng-submit="vm.saveComment()" ng-if="session">
+		<textarea class="comment-field" ng-model="vm.body" required></textarea>
+		<button class="btn btn__green" type="submit"><i class="fa fa-plus"></i> Add comment</button>
+	</form>
+	<div class="comments-output" ng-repeat="comment in vm.post.comments">
+		<div class="comment-item">
+			<span class="comment-author">{{ comment.author_name }}</span>
+			<span class="comment-body">{{ comment.body }}</span>
+			<span class="comment-date">{{ comment.date }}</span>
+			<div class="comment-actions">
+				<button class="btn btn__blue">Reply</button>
+				<button class="btn-circle btn__green" ng-if="session"><i class="fa fa-edit"></i></button>
+				<button class="btn-circle btn__red" ng-if="session"><i class="fa fa-trash-alt"></i></button>
+			</div>
+		</div>
+	</div>
 </section>

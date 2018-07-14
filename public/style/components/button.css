@@ -43,7 +43,25 @@
 .btn-circle:active {
 	transform: scale(0.9);
 }
-	
+
+
+.icon {
+	background-color: transparent;
+	font-size: 20px;
+	border: none;
+	cursor: pointer;
+	outline: none;
+}
+
+.icon:hover {
+	opacity: 0.6;
+}
+
+.icon:active {
+	transform: scale(0.9);
+}
+
+
 	.btn__black {
 		background-color: rgba(0, 0, 0, 0.8);
 		border-color: rgba(0, 0, 0, 0.8);

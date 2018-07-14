@@ -42,7 +42,7 @@
 }
 
 .comments-output {
-	padding: 30px 0;
+	margin: 10px 0;
 }
 
 .comment-item {
@@ -79,6 +79,7 @@
 }
 
 .comment-actions {
-	padding: 10px 15px;
+	padding: 5px 15px;
 	display: flex;
+	justify-content: center;
 }

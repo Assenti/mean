@@ -1,39 +1,18 @@
 /* 3rd party libraries */
 @import url('./vendor/reset.css');
+/* Fonts */
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+/* Icons */
 @import url('https://use.fontawesome.com/releases/v5.1.0/css/all.css');
+/* Bootstrap 4 */
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css');
 
 /* atoms */
-@import url('./components/button.css');
-@import url('./components/modal.css');
-@import url('./components/table.css');
-@import url('./components/header.css');
-@import url('./components/auth.css');
-@import url('./components/footer.css');
-@import url('./components/post-form.css');
-@import url('./components/register.css');
 
 /* moleculas */
 @import url('./pages/profile.css');
 @import url('./pages/home.css');
 @import url('./pages/blog-detail.css');
-
-html, h1, h2, h3, h4, h5, h6, p, table, tr, th, td, input, label, button, li, div {
-	font-family: 'Ubuntu', sans-serif;
-}
-
-h1 {
-	font-size: 34px;
-}
-
-h2 {
-	font-size: 30px;
-}
-
-h3 {
-	font-size: 26px;
-}
-
-h4 {
-	font-size: 22px;
-}
+@import url('./pages/header.css');
+@import url('./pages/auth.css');
+@import url('./pages/comment.css');

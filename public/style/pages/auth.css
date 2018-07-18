@@ -1,0 +1,12 @@
+.auth {
+	margin-top: 50px;
+	text-align: center;
+	width: 30%;
+	min-width: 300px;
+	/*background-color: rgba(0, 0, 0, 0.6);*/
+}
+
+.auth-logo {
+	width: 70px;
+	cursor: pointer;
+}

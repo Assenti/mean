@@ -19,4 +19,6 @@ function HeaderCtrl($http, $scope, $state, $rootScope, $cookies){
 			console.log(err);
 		});
 	}
+
+	
 }

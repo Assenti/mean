@@ -1,0 +1,30 @@
+.commment-item {
+	position: relative;
+}
+
+.comment-edit {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: white;
+	border-radius: 5px;
+}
+
+.comment-edit__input {
+	width: 100%;
+	box-sizing: border-box;
+	height: calc(100% - 50px);
+	border: none;
+	border-radius: 5px 5px 0 0;
+	border-bottom: 1px solid grey;
+	outline: none;
+}
+
+/*
+	on btn - Edit
+	ng-click="vm.selectComment($index, comment)"
+
+
+*/

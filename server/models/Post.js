@@ -4,7 +4,7 @@ const PostSchema = mongoose.Schema({
 	title: String, 
 	content: String,
 	author: String,
-	data: {
+	date: {
 		type: Date,
 		default: Date.now
 	},

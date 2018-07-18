@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html ng-app="decode">
 <head>
-	<title>Main page</title>
+	<title>Blog App</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<base href="/">
 	<link rel="shortcut icon" href="/images/github.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="./style/all.css">
 </head>
 <body>
-	<section class="header" ng-controller='HeaderCtrl as vm'>
-		<img class="logo" src="/images/github-logo.svg" ui-sref="home">
-		<div class="header-nav">
-			<li class="header-nav__item" ui-sref="home"><i class="fa fa-home"></i> Home</li>
-			<li class="header-nav__item" ui-sref="profile"><i class="fa fa-user"></i> Profile</li>
-		</div>
-		<div class="header-action">
-			<button class="btn btn__blue" ui-sref="auth" ng-if="!session"><i class="fa fa-sign-in-alt"></i> Sign In</button>
-			<button class="btn btn__black" ng-if="!session" ui-sref="register"><i class="fa fa-user-plus"></i> Sign Up</button>
-			<button class="btn btn__red" ng-click="vm.logout()" ng-if="session"><i class="fa fa-sign-out-alt"></i> Sign Out</button>
-		</div>
-	</section>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" ng-controller='HeaderCtrl as vm'>
+		<img class="header__img" src="/images/github-logo.svg" ui-sref="home">
+	 	<a class="navbar-brand" ui-sref="home">Blog App</a>
+	  	<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	    	<span class="navbar-toggler-icon"></span>
+	  	</button>
+	  	<div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
+	    	<div class="navbar-nav">
+	      		<a class="nav-item nav-link" ui-sref="home"><i class="fa fa-home"></i> Home</a>
 
-	<!-- pages -->
+	      		<!-- SESSION IN DROPMENU -->
+	      		<li class="nav-item dropdown badge badge-warning" ng-if="session">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">You logged as {{ session.name }}</a>			       
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+				        <a class="dropdown-item" ui-sref="profile" ng-if="session"><i class="fa fa-user"></i> Profile</a>
+				        <a class="dropdown-item" ng-click="vm.logout()" ng-if="session"><i class="fa fa-sign-out-alt"></i> Sign Out</a>
+			        </div>
+		      	</li>
+
+		      	<!-- SESSION OUT DROPMENU -->
+		      	<li class="nav-item dropdown badge badge-warning" ng-if="!session">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Auth</a>			       
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+				        <a class="dropdown-item" ui-sref="auth" ng-if="!session"><i class="fa fa-sign-in-alt"></i> Sign In</a>
+				        <a class="dropdown-item" ng-if="!session" ui-sref="register"><i class="fa fa-user-plus"></i> Sign Up</a>
+			        </div>
+		      	</li>
+	    	</div>
+	  	</div>
+	</nav>
+
 	<ui-view></ui-view>
-	<!-- <section class="footer">
-		<div class="footer-content">Blog App - Decode School - MEAN Stack</div>
-		<img class="logo" src="/images/github.svg" ui-sref="home">
-		<div class="footer-content">All rights reserved &copy; 2018</div>
-	</section> -->
 </body>
 <script src="/js/vendor/ng.min.js"></script>
 <script src="/js/vendor/ng-route.min.js"></script>
 <script src="/js/vendor/ng-cookies.min.js"></script>
+<script src="/js/vendor/jquery.min.js"></script>
 <script src="/app.js"></script>
 <script src="/js/vendor/file.js"></script>
 <script src="/js/controllers/home.js"></script>
@@ -40,4 +53,6 @@
 <script src="/js/controllers/auth.js"></script>
 <script src="/js/controllers/header.js"></script>
 <script src="/js/controllers/register.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 </html>

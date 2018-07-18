@@ -51,7 +51,7 @@ router.delete('/:id', (req, res, next)=>{
 	Post.remove({_id: req.params.id})
 	.exec((err, result)=>{
 		if(err) return res.send(err)
-		res.send(200)
+		res.sendStatus(200)
 	})
 })
 

@@ -1,3 +1,79 @@
 <div class="container">
-	<h1 class="display-4">Hello from Profile Page</h1>
+
+	<div class="display-4"><span class="badge badge-info">Profile Page</span></div>
+
+	<!-- NEW POST ADDING FORM -->
+	<h2>Hello, {{ session.name }}, let's add a new post</h2>
+	<form ng-submit="vm.savePost()">
+		<div class="form-group">
+			<input class="form-control" type="text" placeholder="Input title..." ng-model="vm.title" required>
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" type="text" placeholder="Input content..." ng-model="vm.content" required></textarea>
+		</div>
+		<div class="input-group mb-3">
+			<input type="file" id="inputGroupFile02" ng-file-model="vm.file" accept="image/*" required>
+		    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose image for your post</label>
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Add</button>
+			<button class="btn btn-secondary" type="reset"><i class="fa fa-power-off"></i> Reset</button>
+		</div>
+	</form>
+
+	<!-- LOGGED AUTHOR'S POSTS LIST -->
+	<h2>Your posts list</h2>
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Posted Date</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="post in vm.posts | filter: session.name">
+				<td ng-bind="post.title" ui-sref="post({id: post._id})"></td>
+				<td ng-bind="post.author" ui-sref="post({id: post._id})"></td>
+				<td ng-bind="post.date" ui-sref="post({id: post._id})"></td>
+				<td>
+					<button class="btn" ng-click="vm.makeEditable(post)" data-toggle="modal" data-target="#Emodal"><i class="fa fa-edit"></i></button>
+					<button class="btn" ng-click="vm.deletePost(post)"><i class="fa fa-trash-alt"></i></button>
+					<button class="btn" ui-sref="post({id: post._id})"><i class="fa fa-info-circle"></i></button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="Emodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+    	<div class="modal-header">
+        	<h5 class="modal-title" id="exampleModalCenterTitle">Edit Comment</h5>
+        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          		<span aria-hidden="true">&times;</span>
+        	</button>
+      	</div>
+	    <div class="modal-body">
+	    	<div class="form-group">
+	    		<input class="form-control" ng-model="vm.objectToEdit.author" disabled>
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="title">Title</label>
+	    		<input type="text" class="form-control" ng-model="vm.objectToEdit.title" id="title">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="content">Content</label>
+	    		<textarea text="text" class="form-control" ng-model="vm.objectToEdit.content" id="content"></textarea>
+	    	</div>
+	    </div>
+	    <div class="modal-footer">
+	        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button class="btn btn-primary" ng-click="vm.editPost()" data-dismiss="modal">Save changes</button>
+	    </div>
+    </div>
+  </div>
 </div>

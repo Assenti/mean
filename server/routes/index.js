@@ -53,11 +53,11 @@ router.post('/register', (req, res, next)=> {
 	user.save((err, user)=> {	
 		if(err) return res.send(err)
 		let mailOptions = {
-	        from: '"Sign Up" <172.3itstep2017@gmail.com>', // sender address
+	        from: '"Blog App" <172.3itstep2017@gmail.com>', // sender address
 	        to: user.email, // list of receivers
-	        subject: 'Hello ✔', // Subject line
-	        text: 'Hello world?', // plain text body
-	        html: `<a href="http://localhost:3000/api/accept/${user._id}">Move to link</a>` // html body
+	        subject: 'Sign Up Confirmation', // Subject line
+	        // text: 'Hello world?', // plain text body
+	        html: `<p>Hello Mr.${user.name}. Please finish your registration on Blog App.</p><a href="http://localhost:3000/api/accept/${user._id}">Move to link</a>` // html body
 	    }
 
 	    transporter.sendMail(mailOptions, (error, info)=> {

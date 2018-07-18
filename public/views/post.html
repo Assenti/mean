@@ -1,27 +1,64 @@
-<section class="post-detail">
-	<h1>Post Details</h1>
-	<img class="post-image" ng-src="{{ vm.post.link || '../images/no-image.png' }}">
-	<table class="post-table">
-		<tr><td>Title: {{ vm.post.title }}</td></tr>
-		<tr><td>Content: {{ vm.post.content }}</td></tr>
-		<tr><td>Author: {{ vm.post.author }}</td></tr>
-		<tr><td>Created Date: {{ vm.post.data }}</td></tr>
-	</table>
-	<button class="btn btn__blue" ui-sref="home"><i class="fa fa-undo"></i> Back</button>
-	<form ng-submit="vm.saveComment()" ng-if="session">
-		<textarea class="comment-field" ng-model="vm.body" required></textarea>
-		<button class="btn btn__green" type="submit"><i class="fa fa-plus"></i> Add comment</button>
-	</form>
-	<div class="comments-output" ng-repeat="comment in vm.post.comments">
-		<div class="comment-item">
-			<span class="comment-author">{{ comment.author_name }}</span>
-			<span class="comment-body">{{ comment.body }}</span>
-			<span class="comment-date">{{ comment.date }}</span>
-			<div class="comment-actions">
-				<button class="icon fa fa-reply"></button>
-				<button class="icon fa fa-edit" ng-if="session"></button>
-				<button class="icon fa fa-trash-alt" ng-if="session"></button>
-			</div>
-		</div>
+<div class="container">
+	<h1 class="display-4">Post: <span class="badge badge-info">{{ vm.post.title }}</span></h1>
+	<div class="media border p-3">
+		<img ng-src="{{ vm.post.link }}" alt="{{ vm.post.title }}" class="mr-3 mt-3" style="width:70px;">
+	    <div class="media-body">
+	    	<h4 class="bg-light">{{ vm.post.author }} <small><i>Posted on {{ vm.post.date }}</i></small></h4>
+	    	<p>Title: {{ vm.post.title }}</p>
+	    	<p>{{ vm.post.content }}</p>
+	    	<div class="form-group">
+	    		<button class="btn btn-light" ui-sref="home"><i class="fa fa-undo"></i> Back</button>
+	    		<span>{{ vm.post.comments.length }} comments</span>
+	    	</div>
+	    	<div ng-if="session">
+	    		<h4>Leave comment</h4>
+	    		<form ng-submit="vm.saveComment()" >
+		    		<div class="form-group">
+		    			<textarea class="form-control" ng-model="vm.body" required></textarea>
+		    		</div>
+					<button class="btn btn-primary" type="submit"><i class="fa fa-comment"></i> Comment</button>
+				</form>
+	    	</div>
+	    	<div class="media p-3" ng-repeat="comment in vm.post.comments">
+ 				<div class="media-body border p-3">
+        			<h4 class="bg-light">{{ comment.author_name }} <small><i>Posted on </i><i ng-bind="comment.date | date"></i></small></h4>
+        			<p>{{ comment.body }}</p>
+        			<!-- <button class="btn btn-light fa fa-reply"></button> -->
+					<button class="btn btn-light fa fa-edit" ng-if="session && comment.author_name === session.name" ng-click="vm.makeEditable(comment)" data-toggle="modal" data-target="#modal"></button>
+					<button class="btn btn-light fa fa-trash-alt" ng-if="session._id == comment.author" ng-click="vm.deleteComment($index, comment)"></button>
+  				</div>
+    		</div>
+    		<!-- <form class="comment_edit" ng-if="vm.currentComment == $index">
+				<textarea class="comment_edit__input" type="text" class="form-control" ng-model="vm.objectToEdit.body" id="content"></textarea>
+				<button>Save Changes</button>
+				<button>Cancel</button> 
+			</form>   -->
+	    </div>
 	</div>
-</section>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+    	<div class="modal-header">
+        	<h5 class="modal-title" id="exampleModalCenterTitle">Edit Comment</h5>
+        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          		<span aria-hidden="true">&times;</span>
+        	</button>
+      	</div>
+	    <div class="modal-body">
+	       	<div class="form-group">
+				<textarea type="text" class="form-control" ng-model="vm.objectToEdit.body" id="content"></textarea> 
+	        </div>
+	    </div>
+	    <div class="modal-footer">
+	        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button class="btn btn-primary" ng-click="vm.editComment()" data-dismiss="modal">Save changes</button>
+	    </div>
+    </div>
+  </div>
+</div>
+
+
+	

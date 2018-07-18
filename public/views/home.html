@@ -1,40 +1,17 @@
-<div class="post-form" ng-controller="HeaderCtrl as vm" ng-if="session">
-	<div class="post-title">New Post Adding Form</div>
-	<form ng-submit="vm.savePost()">
-		<input type="text" placeholder="Title..." ng-model="vm.title" required >
-		<input type="text" placeholder="Content..." ng-model="vm.content" required>
-		<input type="text" placeholder="Author..." ng-model="vm.author" required>
-		<input class="input-file" type="file" ng-file-model="vm.file" accept="image/*" required>
-		<button class="btn btn__green" type="submit"><i class="fa fa-plus"></i> Add</button>
-		<button class="btn btn__grey" type="reset"><i class="fa fa-power-off"></i> Reset</button>
-	</form>
+<div class="container">
+	<div class="display-4"><span class="badge badge-info">Home Page</span></div>
+	<div class="display-4">All posts list</div>
+	<div class="media border p-3" ng-repeat="post in vm.posts">
+		<img ng-src="{{ post.link }}" alt="{{ post.title }}" class="mr-3 mt-3" style="width:70px;">
+	    <div class="media-body">
+	    	<h4>{{ post.author }} <small><i>Posted on </i><i ng-bind="post.date | date"></i></small></h4>
+	    	<p>Title: {{ post.title }}</p>
+	    	<p>{{ post.content }}</p>
+	    	<button class="btn btn-info" ui-sref="post({id: post._id})"><i class="fa fa-info-circle"></i> More...</button>
+	    	<span>{{ post.comments.length }} comment(s)</span>
+	    </div>
+	</div>
 </div>
-<div class="table-title">Added Posts</div>
-<table class="table">
-	<thead class="thead">
-		<tr>
-			<th>Title</th>
-			<th>Author</th>
-			<th>Posted Date</th>
-			<th>Image</th>
-			<th>Action</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="post in vm.posts">
-			<td ng-bind="post.title" ui-sref="post({id: post._id})"></td>
-			<td ng-bind="post.author" ui-sref="post({id: post._id})"></td>
-			<td ng-bind="post.data" ui-sref="post({id: post._id})"></td>
-			<td><img ng-src="{{ post.link || './images/no-image.png' }}"></td>
-			<td>
-				<button class="btn-circle btn__blue" ng-click="vm.makeEditable(post)"><i class="fa fa-edit"></i></button>
-				<button class="btn-circle btn__red" ng-click="vm.deletePost(post)"><i class="fa fa-trash-alt"></i></button>
-				<button class="btn-circle btn__green" ui-sref="post({id: post._id})"><i class="fa fa-info-circle"></i></button>
-			</td>
-		</tr>
-	</tbody>
-</table>
-
 
 <section class="modal" ng-if="vm.objectToEdit != null">
 	<div class="modal__backdrop" ng-click="vm.closeModal()"></div>

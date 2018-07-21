@@ -1,0 +1,34 @@
+.filter-link {
+	cursor: pointer;
+}
+
+.filter-table {
+	width: 100%;
+	margin: 20px auto;
+	border-collapse: collapse;
+}
+
+.filter-row--head {
+	background-color: rgb(240, 240, 240);
+}
+
+
+.filter-row--head > th {
+	border-bottom: 1px solid #e7e7e7;
+	font-weight: 600;
+}
+
+.filter-column {
+	padding: 10px;
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 18px;
+}
+
+.filter-column.active {
+	color: blue;
+}
+
+.filter-column.reactive {
+	color: red;
+}
+

@@ -24,7 +24,7 @@
         			<h4 class="bg-light">{{ comment.author_name }} <small><i>Posted on </i><i ng-bind="comment.date | date"></i></small></h4>
         			<p>{{ comment.body }}</p>
         			<!-- <button class="btn btn-light fa fa-reply"></button> -->
-					<button class="btn btn-light fa fa-edit" ng-if="session && comment.author_name === session.name" ng-click="vm.makeEditable(comment)" data-toggle="modal" data-target="#modal"></button>
+					<button class="btn btn-light fa fa-edit" ng-if="session._id == comment.author" ng-click="vm.makeEditable(comment)" data-toggle="modal" data-target="#modal"></button>
 					<button class="btn btn-light fa fa-trash-alt" ng-if="session._id == comment.author" ng-click="vm.deleteComment($index, comment)"></button>
   				</div>
     		</div>

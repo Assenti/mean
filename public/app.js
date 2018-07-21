@@ -41,6 +41,12 @@ function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 		templateUrl: '/views/post.html',
 		controller: 'PostCtrl',
 		controllerAs: 'vm'
+	})
+	.state('filter', {
+		url: '/filter',
+		templateUrl: '/views/filter.html',
+		controller: 'FilterCtrl',
+		controllerAs: 'vm'
 	});
 
 

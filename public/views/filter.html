@@ -1,0 +1,30 @@
+<div class="container">
+	<h1 class="display-4"><span class="badge badge-info">Filters</span></h1>
+
+	<div class="form-group">
+		<input class="form-control" type="text" ng-model="vm.search" placeholder="Start input...">
+	</div>
+	
+	<!-- FILTER TABLE -->
+	<table class="filter-table">
+		<thead>
+			<tr class="filter-row--head">
+				<th ng-class="{'active': vm.filter == 'name', 'reactive': vm.filter == '-name'}" class="filter-column filter-link" ng-click="vm.sortToggler('name')">Name <i class="fa fa-sort-down"></i></th>
+				<th ng-class="{'active': vm.filter == 'surname', 'reactive': vm.filter == '-surname'}" class="filter-column filter-link" ng-click="vm.sortToggler('surname')">Surname <i class="fa fa-sort-down"></i></th>
+				<th ng-class="{'active': vm.filter == 'position', 'reactive': vm.filter == '-position'}" class="filter-column filter-link" ng-click="vm.sortToggler('position')">Position <i class="fa fa-sort-down"></i></th>
+				<th ng-class="{'active': vm.filter == 'age', 'reactive': vm.filter == '-age'}" class="filter-column filter-link" ng-click="vm.sortToggler('age')">Age <i class="fa fa-sort-down"></i></th>
+				<th ng-class="{'active': vm.filter == 'date', 'reactive': vm.filter == '-date'}" class="filter-column filter-link" ng-click="vm.sortToggler('date')">Date <i class="fa fa-sort-down"></i></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="employee in vm.employees | orderBy: vm.filter | filter: vm.search">
+				<td class="filter-column">{{ employee.name }}</td>
+				<td class="filter-column">{{ employee.surname }}</td>
+				<td class="filter-column">{{ employee.position }}</td>
+				<td class="filter-column">{{ employee.age }}</td>
+				<td class="filter-column">{{ employee.date | mydate}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>

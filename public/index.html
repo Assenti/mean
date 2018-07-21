@@ -14,9 +14,10 @@
 	  	<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	    	<span class="navbar-toggler-icon"></span>
 	  	</button>
-	  	<div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
+	  	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 	    	<div class="navbar-nav">
 	      		<a class="nav-item nav-link" ui-sref="home"><i class="fa fa-home"></i> Home</a>
+	      		<a class="nav-item nav-link" ui-sref="filter"><i class="fa fa-filter"></i> Filters</a>
 
 	      		<!-- SESSION IN DROPMENU -->
 	      		<li class="nav-item dropdown badge badge-warning" ng-if="session">
@@ -46,6 +47,7 @@
 <script src="/js/vendor/ng-cookies.min.js"></script>
 <script src="/js/vendor/jquery.min.js"></script>
 <script src="/app.js"></script>
+<script src="/js/filter/filters.js"></script>
 <script src="/js/vendor/file.js"></script>
 <script src="/js/controllers/home.js"></script>
 <script src="/js/controllers/profile.js"></script>
@@ -53,6 +55,7 @@
 <script src="/js/controllers/auth.js"></script>
 <script src="/js/controllers/header.js"></script>
 <script src="/js/controllers/register.js"></script>
+<script src="/js/controllers/filter.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 </html>

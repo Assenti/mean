@@ -4,6 +4,7 @@ const multer = require('multer')
 const upload = multer({dest: 'uploads/'})
 const fs = require('fs')
 const path = require('path')
+const asyncMiddleware = require('../async')
 
 const Post = require('../models/Post')
 const Comment = require('../models/Comment')
@@ -24,6 +25,16 @@ router.get('/:id', (req, res, next)=>{
  		})
 })
 
+router.get('/search/:query', (asyncMiddleware(async (req, res, next)=> {
+	const myRexExp = new RegExp(`${req.params.query}`, 'i')
+	let result = await Post.find({
+		$or: [
+			{title: myRexExp},
+			{content: myRexExp}
+		]
+	}).limit(5).exec()
+	res.send(result)
+})))
 
 router.post('/', upload.single('file'), (req, res, next)=>{
 	var post = new Post({

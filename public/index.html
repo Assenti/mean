@@ -11,6 +11,15 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" ng-controller='HeaderCtrl as vm'>
 		<img class="header__img" src="/images/github-logo.svg" ui-sref="home">
 	 	<a class="navbar-brand" ui-sref="home">Blog App</a>
+	 	<div class="header-search">
+			<div class="header-search-inner">
+				<input ng-keyup="vm.search()" ng-model="vm.query" class="header-search__input" type="text" name="" placeholder="Search...">
+				<i class="fa fa-search"></i>
+			</div>
+			<div class="header-search-list" ng-if="vm.query_result.length > 0">
+				<li class="header-search-list__item" ng-repeat="result in vm.query_result" ng-click="vm.query_result.length = 0" ui-sref="post({id: result._id})">{{ result.title }}</li>
+			</div>
+		</div>
 	  	<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	    	<span class="navbar-toggler-icon"></span>
 	  	</button>
@@ -20,7 +29,7 @@
 	      		<a class="nav-item nav-link" ui-sref="filter"><i class="fa fa-filter"></i> Filters</a>
 
 	      		<!-- SESSION IN DROPMENU -->
-	      		<li class="nav-item dropdown badge badge-warning" ng-if="session">
+	      		<li class="nav-item nav-link dropdown" ng-if="session">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">You logged as {{ session.name }}</a>			       
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 				        <a class="dropdown-item" ui-sref="profile" ng-if="session"><i class="fa fa-user"></i> Profile</a>
@@ -29,7 +38,7 @@
 		      	</li>
 
 		      	<!-- SESSION OUT DROPMENU -->
-		      	<li class="nav-item dropdown badge badge-warning" ng-if="!session">
+		      	<li class="nav-item dropdown" ng-if="!session">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Auth</a>			       
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 				        <a class="dropdown-item" ui-sref="auth" ng-if="!session"><i class="fa fa-sign-in-alt"></i> Sign In</a>

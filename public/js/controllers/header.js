@@ -20,5 +20,20 @@ function HeaderCtrl($http, $scope, $state, $rootScope, $cookies){
 		});
 	}
 
-	
+	vm.search = function(){
+		// var my_regExp = new RegExp(`${vm.query}`, 'i');
+		if(!vm.query){
+			return
+		}
+		$http.get('/api/post/search/' + vm.query)
+		.success(function(response){
+			console.log(response);
+			vm.query_result = response;
+		})
+		.error(function(err){
+			console.log(err);
+		})
+	}
 }
+
+// debounce

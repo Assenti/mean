@@ -14,6 +14,12 @@ const PostSchema = mongoose.Schema({
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Comment'
 		}
+	],
+	liked_users: [
+	{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User'
+	}
 	]
 })
 

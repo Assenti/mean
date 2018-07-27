@@ -13,7 +13,15 @@ function MainCtrl($http, $scope){
 			console.log(err);
 		});
 
-	
+	vm.setLike = function(id, index){
+		$http.put('/api/post/like/' + id)
+		.success(function(response){
+			vm.posts[index] = response;
+		})
+		.error(function(err){
+			console.log(err);
+		});
+	}
 
 }
 

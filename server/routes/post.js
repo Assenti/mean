@@ -84,4 +84,30 @@ router.put('/', (req, res, next)=> {
 	})
 })
 
+router.put('/like/:id', asyncMiddleware(async (req, res, next)=> {
+	if(req.user) {
+		let post = await Post.findById(req.params.id).exec()
+		console.log(post.liked_users, post.liked_users.includes(req.user._id), `${req.user._id}`)
+		var index = post.liked_users.indexOf(req.user._id);
+		console.log(index)
+		if(index >= 0){
+			post.liked_users = post.liked_users.filter((user)=> user != `${req.user._id}`)
+			console.log(post.liked_users)
+
+		}
+		else {
+			post.liked_users.push(req.user._id);
+		}
+
+		post.save((err, post)=> {
+			if(err) res.send(err)
+			res.send(post)
+		})
+	} else {
+		res.sendStatus(401)
+	}
+	
+
+}))
+
 module.exports = router

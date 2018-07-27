@@ -7,8 +7,21 @@
 	    	<h4>{{ post.author }} <small><i>Posted on </i><i ng-bind="post.date | date"></i></small></h4>
 	    	<p>Title: {{ post.title }}</p>
 	    	<p>{{ post.content }}</p>
-	    	<button class="btn btn-info" ui-sref="post({id: post._id})"><i class="fa fa-info-circle"></i> More...</button>
-	    	<span>{{ post.comments.length }} comment(s)</span>
+	    	<div class="d-flex align-items-center justify-content-between px-2">
+	    		<button class="btn btn-info" ui-sref="post({id: post._id})"><i class="fa fa-info-circle"></i> More...</button>
+		    	<div>
+		    		<span>
+		    			<i class="fa fa-comments"></i>
+		    			<span ng-bind="post.comments.length"></span>
+		    		</span>
+			    	<span>
+		    			<img class="heart" src="/images/red-heart.svg">
+		    			<span ng-bind="post.liked_users.length"></span>
+		    		</span>
+		    	</div>
+	    		<img class="like" src="/images/red-heart.svg" ng-if="session && post.liked_users.includes(session._id)" ng-click="vm.setLike(post._id, $index)" title="Like">
+			    <img class="like" src="/images/grey-heart.svg" ng-if="session && !post.liked_users.includes(session._id)" ng-click="vm.setLike(post._id, $index)" title="Like">
+	    	</div>
 	    </div>
 	</div>
 </div>

@@ -4,19 +4,46 @@
 
 // console.log('Hello world II');
 
-const myFunc = ()=> {
+const addString = (previuous, current)=> {
 	return new Promise((resolve, reject)=> {
 		setTimeout(()=> {
-			resolve('Hello world 1')
-		}, 3000);
+			resolve(previuous + ' ' + current)
+		}, 1000);
 	})
 }
 
-const otherFunc = async () => {
-	setTimeout(()=> {
-		return 'Hello from otherFunc()'
-	}, 2000)
+// const printResult = ()=> {
+// 	addString('', 'A')
+// 	.then(result => {
+// 		return addString(result, 'B')
+// 	})
+// 	.then(result => {
+// 		return addString(result, 'C')
+// 	})
+// 	.then(result => {
+// 		console.log(result)
+// 	})
+// }
+
+
+const printResult = async()=> {
+	let result = ''
+	result = await addString(result, 'A')
+	result = await addString(result, 'B')
+	result = await addString(result, 'C')
+	console.log(result)
 }
+
+
+printResult()
+
+
+
+// const otherFunc = async () => {
+// 	setTimeout(()=> {
+// 		return 'Hello from otherFunc()'
+// 	}, 2000)
+// }
 
 // Async functions
 
@@ -35,7 +62,7 @@ const getRes = async()=> {
 	console.log('After msg')
 }
 
-getRes()
+// getRes()
 
 // otherFunc()
 // 	.then((res)=> {

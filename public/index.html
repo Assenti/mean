@@ -11,42 +11,48 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" ng-controller='HeaderCtrl as vm'>
 		<img class="header__img" src="/images/github-logo.svg" ui-sref="home">
 	 	<a class="navbar-brand" ui-sref="home">Blog App</a>
-	 	<div class="header-search">
-			<div class="header-search-inner">
-				<input ng-keyup="vm.search()" ng-model="vm.query" class="header-search__input" type="text" name="" placeholder="Search...">
-				<i class="fa fa-search"></i>
-			</div>
-			<div class="header-search-list" ng-if="vm.query_result.length > 0">
-				<li class="header-search-list__item" ng-repeat="result in vm.query_result" ng-click="vm.query_result.length = 0" ui-sref="post({id: result._id})">{{ result.title }}</li>
-			</div>
-		</div>
+
 	  	<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	    	<span class="navbar-toggler-icon"></span>
 	  	</button>
+
 	  	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-	    	<div class="navbar-nav">
+	    	<div class="navbar-nav dflex align-items-center">
 	      		<a class="nav-item nav-link" ui-sref="home"><i class="fa fa-home"></i> Home</a>
 	      		<a class="nav-item nav-link" ui-sref="filter"><i class="fa fa-filter"></i> Filters</a>
 
-	      		<!-- SESSION IN DROPMENU -->
+	      		<div class="header-search">
+					<div class="header-search-inner">
+						<input ng-keyup="vm.search()" ng-model="vm.query" class="header-search__input" type="text" name="" placeholder="Search...">
+						<i class="fa fa-search"></i>
+					</div>
+					<div class="header-search-list" ng-if="vm.query_result.length > 0">
+						<li class="header-search-list__item" ng-repeat="result in vm.query_result" ng-click="vm.query_result.length = 0" ui-sref="post({id: result._id})" ng-bind="result.title"></li>
+					</div>
+				</div>
+
+	      		<!-- SESSION-IN DROPMENU -->
 	      		<li class="nav-item nav-link dropdown" ng-if="session">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">You logged as {{ session.name }}</a>			       
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">You logged as <span ng-bind="session.name"></span></a>			       
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 				        <a class="dropdown-item" ui-sref="profile" ng-if="session"><i class="fa fa-user"></i> Profile</a>
 				        <a class="dropdown-item" ng-click="vm.logout()" ng-if="session"><i class="fa fa-sign-out-alt"></i> Sign Out</a>
 			        </div>
 		      	</li>
 
-		      	<!-- SESSION OUT DROPMENU -->
+		      	<!-- SESSION-OUT DROPMENU -->
 		      	<li class="nav-item dropdown" ng-if="!session">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Auth</a>			       
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-if="!session">Auth</a>			       
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 				        <a class="dropdown-item" ui-sref="auth" ng-if="!session"><i class="fa fa-sign-in-alt"></i> Sign In</a>
 				        <a class="dropdown-item" ng-if="!session" ui-sref="register"><i class="fa fa-user-plus"></i> Sign Up</a>
 			        </div>
 		      	</li>
 	    	</div>
+
 	  	</div>
+
+	  	
 	</nav>
 
 	<ui-view></ui-view>

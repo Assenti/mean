@@ -6,9 +6,16 @@
 	    	<h4 class="bg-light">{{ vm.post.author }} <small><i>Posted on {{ vm.post.date }}</i></small></h4>
 	    	<p>Title: {{ vm.post.title }}</p>
 	    	<p>{{ vm.post.content }}</p>
-	    	<div class="form-group">
+	    	<div class="d-flex align-items-center justify-content-between">
 	    		<button class="btn btn-light" ui-sref="home"><i class="fa fa-undo"></i> Back</button>
-	    		<span>{{ vm.post.comments.length }} comments</span>
+	    		<div>
+	    			<i class="fa fa-comments"></i>
+	    			<span ng-bind="vm.post.comments.length"></span>
+	    		</div>
+	    		<div class="d-flex align-items-center">
+	    			<img class="heart" src="../images/red-heart.svg">
+	    			<span ng-bind="vm.post.liked_users.length"></span>
+	    		</div>
 	    	</div>
 	    	<div ng-if="session">
 	    		<h4>Leave comment</h4>
@@ -21,7 +28,8 @@
 	    	</div>
 	    	<div class="media p-3" ng-repeat="comment in vm.post.comments">
  				<div class="media-body border p-3">
-        			<h4 class="bg-light">{{ comment.author_name }} <small><i>Posted on </i><i ng-bind="comment.date | date"></i></small></h4>
+        			<h4 class="bg-light" ng-bind="comment.author_name"></h4>
+        			<span>Posted on <i ng-bind="comment.date | date: 'medium'"></i></span>
         			<p>{{ comment.body }}</p>
         			<!-- <button class="btn btn-light fa fa-reply"></button> -->
 					<button class="btn btn-light fa fa-edit" ng-if="session._id == comment.author" ng-click="vm.makeEditable(comment)" data-toggle="modal" data-target="#modal"></button>

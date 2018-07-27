@@ -1,1 +1,12 @@
+.like {
+	width: 20px;
+	cursor: pointer;
+}
 
+.like:hover {
+	transform: scale(1.1);
+}
+
+.heart {
+	width: 20px;
+}

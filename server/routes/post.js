@@ -9,21 +9,35 @@ const asyncMiddleware = require('../async')
 const Post = require('../models/Post')
 const Comment = require('../models/Comment')
 
-router.get('/', (req, res, next)=>{
- 	Post.find()
+router.get('/', (req, res, next)=> {
+	Post.find().exec((err, posts)=>{
+		if(err) return res.sens(err)
+		res.send(posts)
+	})
+})
+
+
+router.get('/home/:page', (req, res, next)=>{
+ 	Post.find().skip((req.params.page - 1) * 5)
+ 		.limit(5)
  		.exec((err, posts)=>{
  			if(err) return res.send(err);
- 			res.send(posts);
+ 			Post.count().exec((err, count)=>{
+ 				if(err) return res.send(err)
+ 				res.send({posts: posts, count: count});
+ 			})
+ 			
  		})
 })
 
 router.get('/:id', (req, res, next)=>{
  	Post.findById(req.params.id).populate('comments')
- 		.exec((err, post)=>{
- 			if(err) return res.send(err);
- 			res.send(post);
- 		})
-})
+	.exec((err, post)=>{
+		if(err) return res.send(err);
+			res.send(posts);
+		})
+ 			
+ })
 
 router.get('/search/:query', (asyncMiddleware(async (req, res, next)=> {
 	const myRexExp = new RegExp(`${req.params.query}`, 'i')
@@ -106,8 +120,6 @@ router.put('/like/:id', asyncMiddleware(async (req, res, next)=> {
 	} else {
 		res.sendStatus(401)
 	}
-	
-
 }))
 
 module.exports = router

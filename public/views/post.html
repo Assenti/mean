@@ -1,23 +1,20 @@
 <div class="container">
-	<h1 class="display-4">Post: <span class="badge badge-info">{{ vm.post.title }}</span></h1>
-	<div class="media border p-3">
-		<img ng-src="{{ vm.post.link }}" alt="{{ vm.post.title }}" class="mr-3 mt-3" style="width:70px;">
-	    <div class="media-body">
-	    	<h4 class="bg-light">{{ vm.post.author }} <small><i>Posted on {{ vm.post.date }}</i></small></h4>
-	    	<p>Title: {{ vm.post.title }}</p>
-	    	<p>{{ vm.post.content }}</p>
-	    	<div class="d-flex align-items-center justify-content-between">
-	    		<button class="btn btn-light" ui-sref="home"><i class="fa fa-undo"></i> Back</button>
-	    		<div>
-	    			<i class="fa fa-comments"></i>
-	    			<span ng-bind="vm.post.comments.length"></span>
-	    		</div>
-	    		<div class="d-flex align-items-center">
-	    			<img class="heart" src="../images/red-heart.svg">
-	    			<span ng-bind="vm.post.liked_users.length"></span>
-	    		</div>
+	<div class="media p-2">
+		<img class="mr-2" ng-src="{{ vm.post.link }}" style="width:200px;">
+    	<div class="media-body">
+	    	<div class="bg-light p-2 d-flex align-items-center justify-content-between">
+	    		<h4 ng-bind="vm.post.title"></h4>
+	    		<span>Posted on: <span ng-bind="vm.post.date | date: 'medium'"></span></span>
 	    	</div>
-	    	<div ng-if="session">
+	    	<div class="p-2">By: <span ng-bind="vm.post.author"></span></div>
+	    	<p class="p-2" ng-bind="vm.post.content"></p>
+	    	<div class="p-2">	
+	    		<i class="fa fa-comments text-primary"></i>
+    			<span ng-bind="vm.post.comments.length"></span>
+    			<img class="heart" src="../images/red-heart.svg">
+    			<span ng-bind="vm.post.liked_users.length"></span>
+	    	</div>
+	    	<div ng-if="session" class="p-3">
 	    		<h4>Leave comment</h4>
 	    		<form ng-submit="vm.saveComment()" >
 		    		<div class="form-group">
@@ -26,24 +23,26 @@
 					<button class="btn btn-primary" type="submit"><i class="fa fa-comment"></i> Comment</button>
 				</form>
 	    	</div>
-	    	<div class="media p-3" ng-repeat="comment in vm.post.comments">
- 				<div class="media-body border p-3">
-        			<h4 class="bg-light" ng-bind="comment.author_name"></h4>
-        			<span>Posted on <i ng-bind="comment.date | date: 'medium'"></i></span>
-        			<p>{{ comment.body }}</p>
-        			<!-- <button class="btn btn-light fa fa-reply"></button> -->
-					<button class="btn btn-light fa fa-edit" ng-if="session._id == comment.author" ng-click="vm.makeEditable(comment)" data-toggle="modal" data-target="#modal"></button>
-					<button class="btn btn-light fa fa-trash-alt" ng-if="session._id == comment.author" ng-click="vm.deleteComment($index, comment)"></button>
-  				</div>
-    		</div>
-    		<!-- <form class="comment_edit" ng-if="vm.currentComment == $index">
-				<textarea class="comment_edit__input" type="text" class="form-control" ng-model="vm.objectToEdit.body" id="content"></textarea>
-				<button>Save Changes</button>
-				<button>Cancel</button> 
-			</form>   -->
-	    </div>
+		</div>
 	</div>
+	<div class="media p-3" ng-repeat="comment in vm.post.comments">
+		<div class="media-body border rounded p-2">
+		<div class="bg-light p-2 d-flex align-items-center justify-content-between rounded">
+			<div class="fa fa-user"> <span ng-bind="comment.author_name"></span></div>
+			<span>Posted on: <span ng-bind="comment.date | date: 'medium'"></span></span>
+		</div>
+		<p class="p-2" ng-bind="comment.body"></p>
+		<button class="btn btn-light fa fa-edit" ng-if="session._id == comment.author" ng-click="vm.makeEditable(comment)" data-toggle="modal" data-target="#modal"></button>
+		<button class="btn btn-light fa fa-trash-alt" ng-if="session._id == comment.author" ng-click="vm.deleteComment($index, comment)"></button>
+		</div>
+	</div>
+	<!-- <form class="comment_edit" ng-if="vm.currentComment == $index">
+		<textarea class="comment_edit__input" type="text" class="form-control" ng-model="vm.objectToEdit.body" id="content"></textarea>
+		<button>Save Changes</button>
+		<button>Cancel</button> 
+	</form>   -->
 </div>
+
 
 <!-- MODAL -->
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

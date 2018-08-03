@@ -3,8 +3,8 @@
 	<div class="display-4"><span class="badge badge-info">Profile Page</span></div>
 
 	<!-- NEW POST ADDING FORM -->
-	<h2>Hello, {{ session.name }}, let's add a new post</h2>
-	<form ng-submit="vm.savePost()">
+	<h2 class="p-2">New Post Adding Form</h2>
+	<form class="p-2" ng-submit="vm.savePost()">
 		<div class="form-group">
 			<input class="form-control" type="text" placeholder="Input title..." ng-model="vm.title" required>
 		</div>
@@ -15,16 +15,16 @@
 			<input type="file" id="inputGroupFile02" ng-file-model="vm.file" accept="image/*" required>
 		    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose image for your post</label>
 		</div>
-		<div class="form-group">
-			<button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> Add</button>
-			<button class="btn btn-secondary" type="reset"><i class="fa fa-power-off"></i> Reset</button>
+		<div class="p-2">
+			<button class="btn btn-primary m-2" type="submit"><i class="fa fa-plus"></i> Add</button>
+			<button class="btn btn-secondary m-2" type="reset"><i class="fa fa-power-off"></i> Reset</button>
 		</div>
 	</form>
 
 	<!-- LOGGED AUTHOR'S POSTS LIST -->
-	<h2>Your posts list</h2>
+	<h2 class="p-2">Your posts list</h2>
 	<table class="table table-striped">
-		<thead class="thead-dark">
+		<thead class="bg-info text-light">
 			<tr>
 				<th>Title</th>
 				<th>Posted Date</th>

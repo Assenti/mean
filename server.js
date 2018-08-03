@@ -17,10 +17,13 @@ app.use(morgan('dev'))
 app.use(session({
 	resave: true,
 	secret: 'secret',
+	name: 'mean',
 	saveUninitialized: true,
 	key: 'key',
 	store: new MongoStore({mongooseConnection: mongoose.connection})
 }))
+
+
 
 app.use('/api', require('./server/routes'))
 

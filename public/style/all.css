@@ -17,3 +17,29 @@
 @import url('./pages/auth.css');
 @import url('./pages/comment.css');
 @import url('./pages/filter.css');
+
+.spinner {
+
+}
+
+    .spinner:before {
+        content: 'Loading…';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+    }
+
+    .spinner:not(:required):before {
+        content: '';
+        border-radius: 50%;
+        border: 3px solid #ccc;
+        border-top-color: #03ade0;
+        animation: spinner .6s linear infinite;
+    }
+
+@keyframes spinner {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}

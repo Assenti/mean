@@ -1,5 +1,5 @@
 .like {
-	width: 20px;
+	width: 17px;
 	cursor: pointer;
 }
 
@@ -8,5 +8,33 @@
 }
 
 .heart {
-	width: 20px;
+	width: 17px;
+}
+
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pagination-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30px;
+	width: 30px;
+	font-size: 16px;
+	border: 1px solid lightgrey;
+	background-color: rgb(235, 235, 235);
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.pagination-item:hover {
+	border-color: black;
+}
+
+.pagination-item.active {
+	background-color: rgb(250, 250, 250);
+	font-weight: 600;
 }

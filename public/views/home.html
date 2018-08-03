@@ -1,17 +1,29 @@
 <div class="container">
 	<div class="display-4"><span class="badge badge-info">Home Page</span></div>
-	<h1>All posts list</h1>
-	<div class="media border p-3" ng-repeat="post in vm.posts">
-		<img ng-src="{{ post.link }}" alt="{{ post.title }}" class="mr-3 mt-3" style="width:70px;">
+	<div class="d-flex align-items-center justify-content-between">
+		<h1 class="p-2">All posts list ({{vm.count}})</h1>
+
+		<div class="pagination">
+			<li class="pagination-item fa fa-caret-left" ng-click="vm.prevPage(vm.pages[0])"></li>
+			<li ng-class="{'active': vm.activePage == page}" class="pagination-item" ng-repeat="page in vm.pages" ng-bind="page" ng-click="vm.displayPage(page)"></li>
+			<li class="pagination-item fa fa-caret-right" ng-click="vm.nextPage(vm.pages[vm.pages.length-1])"></li>
+		</div>
+
+	</div>
+	<div class="media border p-2 m-2 rounded" ng-repeat="post in vm.posts">
+		<img ng-src="{{ post.link }}" class="mr-3" style="width:100px;">
 	    <div class="media-body">
-	    	<h4>{{ post.author }} <small><i>Posted on </i><i ng-bind="post.date | date"></i></small></h4>
-	    	<p>Title: {{ post.title }}</p>
-	    	<p>{{ post.content }}</p>
+	    	<div class="bg-light p-2 d-flex align-items-center justify-content-between">
+	    		<h4 ng-bind="post.title"></h4>
+	    		<span>Posted on: <span ng-bind="post.date | date: 'medium'"></span></span>
+	    	</div>
+	    	<div class="p-2">By: <span ng-bind="post.author"></span></div>
+	    	<p class="p-2" ng-bind="post.content"></p>
 	    	<div class="d-flex align-items-center justify-content-between px-2">
 	    		<button class="btn btn-info" ui-sref="post({id: post._id})"><i class="fa fa-info-circle"></i> More...</button>
 		    	<div>
 		    		<span>
-		    			<i class="fa fa-comments"></i>
+		    			<i class="fa fa-comments text-primary"></i>
 		    			<span ng-bind="post.comments.length"></span>
 		    		</span>
 			    	<span>

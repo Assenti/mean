@@ -8,6 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="./style/all.css">
 </head>
 <body>
+	<div ng-show="IsLoading" class="spinner" ng-controller="PreloaderCtrl as vm"></div>
+
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" ng-controller='HeaderCtrl as vm'>
 		<img class="header__img" src="/images/github-logo.svg" ui-sref="home">
 	 	<a class="navbar-brand" ui-sref="home">Blog App</a>
@@ -30,29 +32,25 @@
 						<li class="header-search-list__item" ng-repeat="result in vm.query_result" ng-click="vm.query_result.length = 0" ui-sref="post({id: result._id})" ng-bind="result.title"></li>
 					</div>
 				</div>
+				<!-- SESSION-OUT DROPMENU -->
+		      	<li class="nav-item dropdown" ng-if="!session">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-if="!session1">Auth</a>			       
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+				        <a class="dropdown-item" ui-sref="auth"><i class="fa fa-sign-in-alt"></i> Sign In</a>
+				        <a class="dropdown-item" ui-sref="register"><i class="fa fa-user-plus"></i> Sign Up</a>
+			        </div>
+		      	</li>
 
 	      		<!-- SESSION-IN DROPMENU -->
 	      		<li class="nav-item nav-link dropdown" ng-if="session">
 			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">You logged as <span ng-bind="session.name"></span></a>			       
 			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-				        <a class="dropdown-item" ui-sref="profile" ng-if="session"><i class="fa fa-user"></i> Profile</a>
-				        <a class="dropdown-item" ng-click="vm.logout()" ng-if="session"><i class="fa fa-sign-out-alt"></i> Sign Out</a>
-			        </div>
-		      	</li>
-
-		      	<!-- SESSION-OUT DROPMENU -->
-		      	<li class="nav-item dropdown" ng-if="!session">
-			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-if="!session">Auth</a>			       
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-				        <a class="dropdown-item" ui-sref="auth" ng-if="!session"><i class="fa fa-sign-in-alt"></i> Sign In</a>
-				        <a class="dropdown-item" ng-if="!session" ui-sref="register"><i class="fa fa-user-plus"></i> Sign Up</a>
+				        <a class="dropdown-item" ui-sref="profile"><i class="fa fa-user"></i> Profile</a>
+				        <a class="dropdown-item" ng-click="vm.logout()"><i class="fa fa-sign-out-alt"></i> Sign Out</a>
 			        </div>
 		      	</li>
 	    	</div>
-
 	  	</div>
-
-	  	
 	</nav>
 
 	<ui-view></ui-view>
@@ -71,6 +69,7 @@
 <script src="/js/controllers/header.js"></script>
 <script src="/js/controllers/register.js"></script>
 <script src="/js/controllers/filter.js"></script>
+<script src="/js/controllers/preloader.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 </html>

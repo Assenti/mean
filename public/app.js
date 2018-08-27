@@ -1,6 +1,7 @@
 var app = angular.module('decode', [
 	'ui.router',
-	'ngCookies'
+	'ngCookies',
+	'btford.socket-io'
 ]);
 
 app.config(routeConfig);
@@ -46,6 +47,12 @@ function routeConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 		url: '/filter',
 		templateUrl: '/views/filter.html',
 		controller: 'FilterCtrl',
+		controllerAs: 'vm'
+	})
+	.state('chat', {
+		url: '/chat',
+		templateUrl: '/views/chat.html',
+		controller: 'ChatCtrl',
 		controllerAs: 'vm'
 	});
 

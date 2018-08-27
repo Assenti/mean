@@ -1,1 +1,22 @@
+.profile-loadmore-btn {
+	position: fixed;
+	left: 5px;
+	bottom: 10%;
+	font-size: 14px;
+	border-radius: 5px;
+	border: 1px solid lightgrey;
+	background-color: rgb(41, 163, 163);
+	color: rgb(255, 255, 255);
+	padding: 7px;
+	cursor: pointer;
+	z-index: 6;
+	opacity: 0.7;
+	text-align: center;
+}
+
+.profile-loadmore-btn:hover {
+	opacity: 1;
+}
+
+
 

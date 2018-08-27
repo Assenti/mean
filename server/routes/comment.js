@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
+const editRedis = require('../edit')
+
 const Post = require('../models/Post')
 const Comment = require('../models/Comment')
 const User = require('../models/User')
@@ -20,6 +22,7 @@ router.post('/:id', (req, res, next)=> {
 			post.save((err, post)=> {
 				if(err) return res.send(err)
 				res.send(comment)
+				editRedis.edit(comment.post)
 			})
 		})
 	})	
@@ -32,12 +35,11 @@ router.delete('/:comment_id/:post_id', (req, res, next)=>{
 		Post.findById(req.params.post_id)
 		.exec((err, post)=>{
 			if(err) return res.send(err)
-			console.log(post.comments)	
 			post.comments = post.comments.filter((comment) => comment != req.params.comment_id)
-			console.log(post.comments)
 			post.save((err, post)=> {
 				if(err) return res.send(err)
 				res.sendStatus(200)
+				editRedis.edit(post)
 			})
 		})
 	})
@@ -52,6 +54,7 @@ router.put('/', (req, res, next)=> {
 			comment.save((err, result)=> {
 				if(err) return res.send(err)
 				res.sendStatus(200)
+				editRedis.edit(comment.post)
 			})
 		}	
 	})

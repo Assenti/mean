@@ -1,3 +1,4 @@
+<div class="spinner" ng-show="vm.isLoading"></div>
 <div class="container">
 
 	<div class="display-4"><span class="badge badge-info">Profile Page</span></div>
@@ -22,8 +23,45 @@
 	</form>
 
 	<!-- LOGGED AUTHOR'S POSTS LIST -->
-	<h2 class="p-2">Your posts list</h2>
-	<table class="table table-striped">
+	<h2 class="p-2">All posts list</h2>
+
+	<div class="media border p-2 m-2 rounded" ng-repeat="post in vm.posts">
+		<img ng-src="{{ post.link }}" class="mr-3" style="width:100px;">
+	    <div class="media-body">
+	    	<div class="bg-light p-2 d-flex align-items-center justify-content-between">
+	    		<h4 ng-bind="post.title"></h4>
+	    		<span>Posted on: <span ng-bind="post.date | date"></span></span>
+	    	</div>
+	    	<div class="p-2">By: <span ng-bind="post.author"></span></div>
+	    	<p class="p-2" ng-bind="post.content"></p>
+	    	<div class="d-flex align-items-center justify-content-around">
+		    	<div>
+		    		<span>
+		    			<i class="fa fa-comments text-primary"></i>
+		    			<span ng-bind="post.comments.length"></span>
+		    		</span>
+			    	<span>
+		    			<img class="heart" src="/images/red-heart.svg">
+		    			<span ng-bind="post.liked_users.length"></span>
+		    		</span>
+		    	</div>
+		    	<button class="btn" ng-click="vm.makeEditable(post)" data-toggle="modal" data-target="#Emodal"><i class="fa fa-edit"></i></button>
+				<button class="btn" ng-click="vm.deletePost(post)"><i class="fa fa-trash-alt"></i></button>
+				<button class="btn" ui-sref="post({id: post._id})"><i class="fa fa-info-circle"></i></button>
+	    	</div>
+	    </div>
+	</div>
+
+	<div class="btn btn-info m-4" ng-click="vm.expand()">Load more</div>
+
+</div>
+
+<!-- <div class="profile-loadmore-btn" ng-click="vm.expand()">Load more</div> -->
+
+
+
+
+<!-- 	<table class="table table-striped">
 		<thead class="bg-info text-light">
 			<tr>
 				<th>Title</th>
@@ -42,8 +80,8 @@
 				</td>
 			</tr>
 		</tbody>
-	</table>
-</div>
+	</table> -->
+
 
 <!-- MODAL -->
 <div class="modal fade" id="Emodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

@@ -5,7 +5,13 @@ const UserSchema = mongoose.Schema({
 	email: { type: String, unique: true},
 	name: String,
 	password: String,
-	accepted: { type: Boolean, default: false}
+	accepted: { type: Boolean, default: false},
+	rooms: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'User'
+		}
+	]
 })
 
 UserSchema.pre('save', function(next) {

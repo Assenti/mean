@@ -5,6 +5,7 @@ const LocalStrategy = require('passport-local').Strategy
 const nodemailer = require('nodemailer')
 
 const User = require('../models/User')
+const Room = require('../models/Room')
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -109,6 +110,15 @@ router.post('/auth', passport.authenticate('local'), (req, res, next)=> {
 router.post('/logout', (req, res, next)=> {
 	res.clearCookie('session')
 	res.sendStatus(200)
+})
+
+
+router.get('/roomsearch/:search', (req, res, next)=> {
+	const myRexExp = new RegExp(`${req.params.search}`, 'i')
+	Room.find({name: myRexExp }).limit(5).exec((err, rooms)=> {
+			if(err) return res.send(err)
+			res.send(rooms)
+		})
 })
 
 router.use('/post', require('./post'))

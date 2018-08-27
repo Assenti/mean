@@ -1,19 +1,62 @@
 app.controller('ProfileCtrl', ProfileCtrl);
 
-ProfileCtrl.$inject = ['$http', '$scope', '$rootScope'];
+ProfileCtrl.$inject = ['$http', '$scope', '$rootScope', '$window'];
 
-function ProfileCtrl($http, $scope, $rootScope){
+function ProfileCtrl($http, $scope, $rootScope, $window){
 	var vm = this;
 	vm.objectToEdit = null;
 
-	$http.get('/api/post')
+	vm.shownPosts = 5;
+
+	$http.get('/api/post/profile/' + vm.shownPosts)
+	.success(function(response){
+		vm.posts = response.posts;
+		vm.count = response.count;
+	})
+	.error(function(err){
+		console.log(err);
+	})
+
+	vm.expand = function(){
+		if(vm.shownPosts+5 <= vm.count) {
+			vm.shownPosts += 5;
+		} else {
+			vm.shownPosts += (vm.count - vm.shownPosts);
+		}
+
+		$http.get('/api/post/profile/' + vm.shownPosts)
 		.success(function(response){
-			vm.posts = response;
-			console.log(response);
+			vm.posts = response.posts;
 		})
 		.error(function(err){
 			console.log(err);
-		});
+		})
+	}
+
+
+           
+	// j = jQuery.noConflict();
+	// j(window).scroll(function(){
+	//    if(window.pageYOffset==j('.embed-container').offset().top)
+	//        window.scrollBy(0,-window.pageYOffset);
+	// });
+
+
+
+
+	vm.IsLoading = true;
+
+	angular.element(window).ready(function(){
+		vm.IsLoading = false;
+	});
+
+	// $http.get('/api/post')
+	// 	.success(function(response){
+	// 		vm.posts = response;
+	// 	})
+	// 	.error(function(err){
+	// 		console.log(err);
+	// 	});
 
 	vm.savePost = function() {
 		console.log(vm.file);

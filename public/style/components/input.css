@@ -1,0 +1,28 @@
+.input {
+	padding: 10px 12px;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	font-size: 14px;
+	resize: none;
+}
+
+	.input:focus {
+		border-color: cornflowerblue;
+	}
+
+	.input:focus::placeholder {
+		opacity: 0;
+	}
+
+	.input_search {
+		margin-right: 5px;
+		border: 1px solid #e8e8e8;
+		border-radius: 5px;
+	}
+
+	.input_modal {
+		width: 100%;
+		border: 1px solid #e8e8e8;
+		border-radius: 5px;
+	}

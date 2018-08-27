@@ -1,0 +1,50 @@
+<div class="chat container">
+	<div class="chat-rooms">
+		<div class="chat-rooms-head">
+			<input class="input input_search" 
+				   type="text" 
+				   ng-keyup="vm.searchRooms()" 
+				   ng-model="vm.search" 
+				   ng-model-options="{ debounce: 500 }" 
+				   placeholder="Поиск..."
+				   >
+			<div class="chat-rooms-search-results">
+				<li class="chat-rooms-search-result" ng-repeat="room in vm.search_result" ng-bind="room.name" ng-click="vm.chooseRoom()"></li>
+			</div>
+			<button class="button button_search" ng-click="vm.openRoomCreator()">Создать чат</button>
+		</div>
+		<div ng-class="{'active': vm.activeRoom.name === room.name}" class="chat-room" ng-repeat="room in vm.rooms" ng-bind="room.name" ng-click="vm.changeRoom(room)"></div>
+	</div>
+	<div class="chat-box">
+		<div class="chat-box-head" ng-bind="vm.activeRoom.name"></div>
+		<div class="chat-box-body">
+			<div class="chat-message" ng-repeat="msg in vm.messages">
+				<div class="chat-message-head">
+					<span class="chat-message-author" ng-bind="msg.author_name"></span>
+					<span class="chat-message-time" ng-bind="msg.time.toLocaleTimeString()"></span>
+				</div>
+				<div class="chat-message-text" ng-bind="msg.text"></div>
+			</div>
+		</div>
+		<div class="chat-box-footer">
+			<textarea class="textarea textarea_chat" placeholder="Введите сообщение..." ng-model="vm.text"></textarea>
+			<button class="button button_chat" ng-click="vm.sendMessage()">Отправить</button>
+		</div>
+	</div>
+</div>
+
+
+<div class="chat-modal-backdrop" ng-if="vm.modal">
+	<div class="chat-modal-window">
+		<div class="chat-modal-window-head">Создание нового чата <span class="chat-modal-closer" ng-click="vm.closeRoomCreator()">&times;</span></div>
+		<form class="chat-modal-window-form" ng-submit="vm.createRoom()">
+			<label class="label label_modal">Имя чата:</label>
+			<input class="input input_modal" type="text" ng-model="vm.roomName" placeholder="Введите название...">
+			<div class="chat-modal-window-controls">
+				<button class="button button_chat" type="submit">Создать</button>
+				<button class="button button_disable" ng-click="vm.closeRoomCreator()">Отмена</button>
+			</div>
+		</form>
+	</div>
+</div>
+

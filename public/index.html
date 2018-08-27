@@ -9,7 +9,6 @@
 </head>
 <body>
 	<div ng-show="IsLoading" class="spinner" ng-controller="PreloaderCtrl as vm"></div>
-
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" ng-controller='HeaderCtrl as vm'>
 		<img class="header__img" src="/images/github-logo.svg" ui-sref="home">
 	 	<a class="navbar-brand" ui-sref="home">Blog App</a>
@@ -21,11 +20,12 @@
 	  	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 	    	<div class="navbar-nav dflex align-items-center">
 	      		<a class="nav-item nav-link" ui-sref="home"><i class="fa fa-home"></i> Home</a>
+	      		<a class="nav-item nav-link" ui-sref="chat"><i class="fa fa-comments"></i> Chat</a>
 	      		<a class="nav-item nav-link" ui-sref="filter"><i class="fa fa-filter"></i> Filters</a>
 
 	      		<div class="header-search">
 					<div class="header-search-inner">
-						<input ng-keyup="vm.search()" ng-model="vm.query" class="header-search__input" type="text" name="" placeholder="Search...">
+						<input ng-keyup="vm.search()" ng-model="vm.query" class="header-search__input" type="text" placeholder="Search...">
 						<i class="fa fa-search"></i>
 					</div>
 					<div class="header-search-list" ng-if="vm.query_result.length > 0">
@@ -60,6 +60,13 @@
 <script src="/js/vendor/ng-cookies.min.js"></script>
 <script src="/js/vendor/jquery.min.js"></script>
 <script src="/app.js"></script>
+
+<!-- Sockets libs -->
+<script src="/js/socket/directive.socket.js"></script>
+<script src="/js/socket/service.socket.js"></script>
+<script src="/js/socket/socket.io.js"></script>
+
+
 <script src="/js/filter/filters.js"></script>
 <script src="/js/vendor/file.js"></script>
 <script src="/js/controllers/home.js"></script>
@@ -70,6 +77,7 @@
 <script src="/js/controllers/register.js"></script>
 <script src="/js/controllers/filter.js"></script>
 <script src="/js/controllers/preloader.js"></script>
+<script src="/js/controllers/chat.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 </html>

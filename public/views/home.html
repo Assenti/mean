@@ -4,12 +4,14 @@
 		<h1 class="p-2">All posts list ({{vm.count}})</h1>
 
 		<div class="pagination">
-			<li class="pagination-item fa fa-caret-left" ng-click="vm.prevPage(vm.pages[0])"></li>
-			<li ng-class="{'active': vm.activePage == page}" class="pagination-item" ng-repeat="page in vm.pages" ng-bind="page" ng-click="vm.displayPage(page)"></li>
-			<li class="pagination-item fa fa-caret-right" ng-click="vm.nextPage(vm.pages[vm.pages.length-1])"></li>
+			<li class="pagination-item fa fa-caret-left" ng-click="vm.prevPage()"></li>
+			<li ng-class="{'active': vm.currentPage === (page + 1)}" class="pagination-item" ng-repeat="page in vm.pages track by $index" ng-bind="page+1" ng-click="vm.displayPage(page+1)"></li>
+			<li class="pagination-item fa fa-caret-right" ng-click="vm.nextPage()"></li>
 		</div>
-
 	</div>
+
+	<div class="spinner" ng-show="vm.isLoading"></div>
+
 	<div class="media border p-2 m-2 rounded" ng-repeat="post in vm.posts">
 		<img ng-src="{{ post.link }}" class="mr-3" style="width:100px;">
 	    <div class="media-body">
